@@ -1,0 +1,23 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 400 400" class="animal-svg">
+  <g class="whole" style="transform-origin:200px 330px" stroke="#6E5A50" stroke-width="7" stroke-linejoin="round" stroke-linecap="round">
+    <!-- рама и руль -->
+    <path d="M100 290 L170 230 H250 L300 290" fill="none" stroke-width="12"/>
+    <path d="M268 210 L300 290" fill="none" stroke-width="10"/>
+    <path d="M252 196 L282 186" fill="none" stroke-width="10"/>
+    <!-- бак и сиденье -->
+    <path d="M150 236 C 150 200, 180 190, 214 192 C 246 194, 262 212, 258 236 Z" fill="#F2B27A"/>
+    <path d="M96 222 C 100 206, 130 202, 156 210 L152 232 C 130 232, 104 234, 96 222 Z" fill="#8C6A5F"/>
+    <circle cx="292" cy="218" r="14" fill="#FBE7A6" stroke-width="5"/>
+    <!-- колёса крутятся -->
+    <g class="part wheel" style="transform-origin:100px 296px">
+      <circle cx="100" cy="296" r="46" fill="#5F575C"/>
+      <circle cx="100" cy="296" r="20" fill="#D9D4CF"/>
+      <path d="M100 262 V276" fill="none" stroke="#D9D4CF" stroke-width="6"/>
+    </g>
+    <g class="part wheel" style="transform-origin:300px 296px">
+      <circle cx="300" cy="296" r="46" fill="#5F575C"/>
+      <circle cx="300" cy="296" r="20" fill="#D9D4CF"/>
+      <path d="M300 262 V276" fill="none" stroke="#D9D4CF" stroke-width="6"/>
+    </g>
+  </g>
+</svg>

@@ -1,0 +1,1291 @@
+/* Зверушки. Спокойная палитра, медленные плавные движения, ничего не мигает. */
+
+:root {
+  --bg: #FBF6EE;
+  --ink: #6E5A50;
+  --ink-soft: #A3928A;
+  --card: #FFFDF8;
+  --shadow: 0 6px 24px rgba(110, 90, 80, 0.10);
+  --ease: cubic-bezier(0.45, 0, 0.55, 1);
+  --mic-space: 150px; /* место внизу под кнопки «Взрослый» и «Малыш» */
+  --amp: 1;   /* размах движений */
+  --dur: 1;   /* множитель длительности */
+  --cursor: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='72' height='72' viewBox='0 0 72 72'%3E%3Ccircle cx='36' cy='36' r='27' fill='%23FFFFFF' fill-opacity='0.8' stroke='%236E5A50' stroke-width='6'/%3E%3Ccircle cx='36' cy='36' r='6' fill='%236E5A50'/%3E%3C/svg%3E") 36 36, pointer;
+}
+
+body.calm {
+  --amp: 0.4;
+  --dur: 1.5;
+}
+
+* { box-sizing: border-box; }
+
+html, body {
+  margin: 0;
+  height: 100%;
+  overflow: hidden;
+  background: var(--bg);
+  color: var(--ink);
+  font-family: ui-rounded, "SF Pro Rounded", system-ui, -apple-system, sans-serif;
+  user-select: none;
+  -webkit-user-select: none;
+}
+
+body, button { cursor: var(--cursor); }
+
+button {
+  font: inherit;
+  color: inherit;
+  border: 0;
+  background: none;
+  padding: 0;
+}
+
+button:focus { outline: none; }
+
+/* ---------- экраны ---------- */
+
+#app { position: fixed; inset: 0; }
+
+.screen {
+  position: absolute;
+  inset: 0;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  opacity: 0;
+  visibility: hidden;
+  pointer-events: none;
+  transition: opacity 0.8s var(--ease), visibility 0s 0.8s;
+}
+
+.screen.visible {
+  opacity: 1;
+  visibility: visible;
+  pointer-events: auto;
+  transition: opacity 0.8s var(--ease), visibility 0s;
+}
+
+body:not(.ready) #grid { opacity: 0; }
+
+/* Экран показа прозрачный и появляется сразу: плавность даёт сама карточка,
+   которая вырастает из плитки и возвращается в неё. */
+#stage, #stage.visible { transition: none; }
+#stage.visible .back { animation: fade-in 0.8s var(--ease); }
+
+@keyframes fade-in { from { opacity: 0; } }
+
+/* ---------- плитка зверька (одна и та же в сетке, на старте и крупно) ---------- */
+
+.tile {
+  position: relative;
+  width: 100%;
+  aspect-ratio: 1 / 1.14;
+  container-type: inline-size;
+}
+
+.tile.lifted { visibility: hidden; }
+
+/* Зелёная полоска по кругу: насколько выучен голос малыша для этого зверя (полный круг — 8 примеров). */
+@property --p {
+  syntax: '<number>';
+  inherits: true;
+  initial-value: 0;
+}
+
+.tile-ring {
+  display: none;
+  position: absolute;
+  left: 1.5%;
+  top: 0;
+  width: 97%;
+  aspect-ratio: 1;
+  border-radius: 50%;
+  background: conic-gradient(#6DB356 calc(var(--p) * 360deg), rgba(110, 90, 80, 0.16) 0);
+  -webkit-mask: radial-gradient(farthest-side, transparent calc(100% - 10px), #000 calc(100% - 9px));
+  mask: radial-gradient(farthest-side, transparent calc(100% - 10px), #000 calc(100% - 9px));
+  transition: --p 1.2s var(--ease), opacity 1s var(--ease);
+}
+
+body.rings .tile-ring { display: block; }
+body[data-mode="sleep"] .tile-ring { opacity: 0; }
+
+.tile-circle {
+  position: absolute;
+  left: 4%;
+  top: 2%;
+  width: 92%;
+  aspect-ratio: 1;
+  border-radius: 50%;
+  background: var(--c);
+}
+
+.tile-animal {
+  position: absolute;
+  left: 9%;
+  top: 5%;
+  width: 82%;
+  aspect-ratio: 1;
+}
+
+.tile-name {
+  position: absolute;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  text-align: center;
+  font-size: 9.5cqw;
+  font-weight: 600;
+  letter-spacing: 0.01em;
+}
+
+/* мама и папа: круглое фото, при показе фото мягко перетекают одно в другое */
+.tile-photo {
+  left: 9%;
+  top: 7%;
+  border-radius: 50%;
+  overflow: hidden;
+}
+
+.tile-photo img {
+  position: absolute;
+  inset: 0;
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  opacity: 0;
+  transition: opacity calc(1.4s * var(--dur)) var(--ease);
+}
+
+.tile-photo img.on { opacity: 1; }
+
+.animal-svg {
+  display: block;
+  width: 100%;
+  height: 100%;
+  overflow: visible;
+}
+
+/* ---------- сетка 3 + 2 ---------- */
+
+/* Страница: все её карточки сразу, по категориям в подложках. --cols (карточек в самом
+   длинном ряду), --groups (подложек в нём) и --rows задаёт scene.js для каждой страницы. */
+#grid {
+  --top-space: 2vh;
+  --tile-gap: 1.2vw;
+  --group-gap: 1.4vw;
+  --side-space: 150px;   /* по бокам — стрелки страниц */
+  padding-top: var(--top-space);
+}
+
+.page {
+  --cols: 10;
+  --groups: 3;
+  --rows: 3;
+  --tile: min(
+    calc((100vw - var(--side-space) - var(--groups) * 24px - (var(--groups) - 1) * var(--group-gap) - (var(--cols) - var(--groups)) * var(--tile-gap)) / var(--cols)),
+    calc((100vh - var(--mic-space) - var(--top-space) - 2vh - var(--rows) * 50px - (var(--rows) - 1) * 1.6vh) / (var(--rows) * 1.14))
+  );
+  display: none;
+  flex-direction: column;
+  align-items: center;
+  gap: 1.6vh;
+}
+
+.page.on { display: flex; }
+
+/* стрелки страниц: крупные, мягкие, по краям */
+.page-arrow {
+  position: absolute;
+  top: calc(50% - var(--mic-space) / 2);
+  transform: translateY(-50%);
+  width: 64px;
+  height: 120px;
+  border-radius: 32px;
+  background: var(--card);
+  box-shadow: var(--shadow);
+  color: var(--ink-soft);
+  display: grid;
+  place-items: center;
+}
+
+.page-arrow[hidden] { display: none; }
+.page-arrow.left { left: 1.5vw; }
+.page-arrow.right { right: 1.5vw; }
+.page-arrow svg { width: 40px; height: 40px; }
+body[data-mode] .page-arrow { display: none; }
+
+#grid, #stage { padding-bottom: var(--mic-space); }
+
+.grid-inner {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+.cat-row {
+  display: flex;
+  justify-content: center;
+  align-items: flex-start;
+  gap: var(--group-gap);
+}
+
+/* Категория: мягкая подложка и маленькая подпись в углу */
+.cat-group {
+  padding: 6px 12px 10px;
+  border-radius: 24px;
+  background: var(--g, rgba(110, 90, 80, 0.04));
+}
+
+.cat-group[data-cat="family"] { --g: #F6ECF1; }
+.cat-group[data-cat="transport"] { --g: #EAF1F7; }
+.cat-group[data-cat="things"] { --g: #F5F2E2; }
+.cat-group[data-cat="pets"] { --g: #F4EEE4; }
+.cat-group[data-cat="wild"] { --g: #EAF2E7; }
+.cat-group[data-cat="family2"] { --g: #F6ECF1; }
+.cat-group[data-cat="insects"] { --g: #F5F2E2; }
+.cat-group[data-cat="toys"] { --g: #EAF1F7; }
+.cat-group[data-cat="forest"] { --g: #EAF2E7; }
+.cat-group[data-cat="food"] { --g: #F8ECE6; }
+.cat-group[data-cat="transport2"] { --g: #EAF1F7; }
+.cat-group[data-cat="birds"] { --g: #EAF2E7; }
+.cat-group[data-cat="sea"] { --g: #EAF1F7; }
+.cat-group[data-cat="home"] { --g: #F8ECE6; }
+.cat-group[data-cat="zoo"] { --g: #F5F2E2; }
+.cat-group[data-cat="farm"] { --g: #F4EEE4; }
+.cat-group[data-cat="food3"] { --g: #F6ECF1; }
+.cat-group[data-cat="transport3"] { --g: #EAF1F7; }
+.cat-group[data-cat="nature"] { --g: #F5F2E2; }
+.cat-group[data-cat="clothes"] { --g: #F6ECF1; }
+.cat-group[data-cat="animals4"] { --g: #EAF2E7; }
+.cat-group[data-cat="toys4"] { --g: #EAF1F7; }
+.cat-group[data-cat="treats"] { --g: #F8ECE6; }
+.cat-group[data-cat="transport4"] { --g: #EAF1F7; }
+.cat-group[data-cat="body"] { --g: #F8ECE6; }
+.cat-group[data-cat="bugs"] { --g: #EAF2E7; }
+.cat-group[data-cat="home5"] { --g: #EAF1F7; }
+.cat-group[data-cat="music"] { --g: #F6ECF1; }
+.cat-group[data-cat="food5"] { --g: #F5F2E2; }
+.cat-group[data-cat="transport5"] { --g: #EAF1F7; }
+
+.cat-label {
+  height: 22px;
+  margin: 0 0 6px 6px;
+  font-size: 15px;
+  font-weight: 600;
+  color: var(--ink-soft);
+}
+
+.cat-tiles {
+  display: flex;
+  gap: var(--tile-gap);
+}
+
+.tile-btn { width: var(--tile); }
+
+
+
+/* ---------- крупный показ ---------- */
+
+.stage-card {
+  position: relative;
+  width: min(62vw, calc((100vh - var(--mic-space) - 4vh) / 1.14));
+}
+
+.back {
+  position: absolute;
+  top: 3vh;
+  left: 3vh;
+  width: 104px;
+  height: 104px;
+  border-radius: 50%;
+  background: var(--card);
+  box-shadow: var(--shadow);
+  color: var(--ink);
+  display: grid;
+  place-items: center;
+}
+
+.back svg { width: 56px; height: 56px; }
+
+/* ---------- анимации зверей ---------- */
+
+.animal-svg .whole,
+.animal-svg .part,
+.animal-svg .eyes { transform-box: view-box; }
+
+/* Спокойное моргание раз в 6 секунд, только у крупного зверька. */
+#stage .eyes { animation: blink 6s var(--ease) 3s infinite; }
+
+@keyframes blink {
+  0%, 93%, 100% { transform: scaleY(1); }
+  96% { transform: scaleY(0.1); }
+}
+
+/* котик: виляет хвостом, чуть наклоняет голову */
+.act[data-anim="tail-wag"] .tail { animation: wag calc(1.2s * var(--dur)) var(--ease) 2; }
+.act[data-anim="tail-wag"] .head { animation: tilt calc(2.4s * var(--dur)) var(--ease) 1; }
+
+/* обезьянка: покачивается */
+.act[data-anim="sway"] .whole { animation: sway calc(2.4s * var(--dur)) var(--ease) 1; }
+.act[data-anim="sway"] .tail { animation: wag calc(1.2s * var(--dur)) var(--ease) 2; }
+
+/* панда: мягко подпрыгивает */
+.act[data-anim="bounce"] .whole { animation: hop calc(1.2s * var(--dur)) var(--ease) 2; }
+
+/* черепаха: прячет голову и выглядывает */
+.act[data-anim="peek"] .head { animation: peek calc(2.6s * var(--dur)) var(--ease) 1; }
+
+/* уточка: машет крылышком и чуть подпрыгивает */
+.act[data-anim="flap"] .wing { animation: flap calc(1.1s * var(--dur)) var(--ease) 2; }
+.act[data-anim="flap"] .whole { animation: hop calc(2.2s * var(--dur)) var(--ease) 1; }
+
+/* бабочка и пчёлка машут крылышками */
+.act[data-anim="flutter"] .wings { animation: flutter calc(0.6s * var(--dur)) var(--ease) 4; }
+.act[data-anim="flutter"] .whole { animation: loop calc(2.6s * var(--dur)) var(--ease) 1; }
+
+/* улитка медленно ползёт */
+.act[data-anim="crawl"] .whole { animation: crawl calc(2.6s * var(--dur)) var(--ease) 1; }
+
+/* часики: стрелка делает круг */
+.act[data-anim="tick"] .hand { animation: roll calc(2.4s * var(--dur)) var(--ease) 1; }
+.act[data-anim="tick"] .whole { animation: nod calc(0.6s * var(--dur)) var(--ease) 4; }
+
+/* зайчик: прыг-прыг и шевелит ушками */
+.act[data-anim="hop"] .whole { animation: hop calc(0.9s * var(--dur)) var(--ease) 3; }
+.act[data-anim="hop"] .ears { animation: wag calc(0.9s * var(--dur)) var(--ease) 3; }
+
+/* рыбка плывёт и виляет хвостом */
+.act[data-anim="swim"] .whole { animation: crawl calc(2.6s * var(--dur)) var(--ease) 1; }
+.act[data-anim="swim"] .tail { animation: wag calc(0.65s * var(--dur)) var(--ease) 4; }
+.act[data-anim="swim"] .bubbles { animation: rise calc(1.3s * var(--dur)) var(--ease) 2; }
+
+/* поезд: из трубы идёт дымок (вместе с колёсами в «drive») */
+.act[data-anim="drive"] .spout { animation: spout calc(2.4s * var(--dur)) var(--ease) 1; }
+
+/* ---------- «интересные» анимации: каждый делает своё ---------- */
+
+/* тюлень подбрасывает мячик носом */
+.act[data-anim="juggle"] .ball { animation: toss calc(1.2s * var(--dur)) var(--ease) 2; }
+.act[data-anim="juggle"] .whole { animation: nod calc(1.2s * var(--dur)) var(--ease) 2; }
+
+/* облачко: капают капельки, облачко чуть плывёт */
+.animal-svg .drop { transform-box: fill-box; }
+.act[data-anim="rain"] .drop { animation: drip calc(1.2s * var(--dur)) ease-in 2; }
+.act[data-anim="rain"] .drop:nth-child(2) { animation-delay: 0.35s; }
+.act[data-anim="rain"] .drop:nth-child(3) { animation-delay: 0.7s; }
+.act[data-anim="rain"] .whole { animation: crawl calc(2.8s * var(--dur)) var(--ease) 1; }
+
+/* дельфин ныряет и выпрыгивает над волной */
+.act[data-anim="dive"] .body { animation: dive calc(2.8s * var(--dur)) var(--ease) 1; }
+.act[data-anim="dive"] .tail { animation: wag calc(0.7s * var(--dur)) var(--ease) 4; }
+
+/* лягушка и мячик: присесть — прыжок — мягкая посадка */
+.act[data-anim="jump"] .whole { animation: jump calc(1.3s * var(--dur)) var(--ease) 2; }
+
+/* сова: поворачивает голову туда-сюда и машет крылом */
+.act[data-anim="owl"] .head { animation: look calc(2.6s * var(--dur)) var(--ease) 1; }
+.act[data-anim="owl"] .wing { animation: flap calc(0.9s * var(--dur)) var(--ease) 2; }
+
+/* петушок: запрокидывает голову — «ку-ка-ре-ку» — и хлопает крылом (два раза, как в голосе) */
+.act[data-anim="crow"] .head { animation: crow calc(1.4s * var(--dur)) var(--ease) 2; }
+.act[data-anim="crow"] .wing { animation: flap calc(0.7s * var(--dur)) var(--ease) 4; }
+
+/* пингвин и уточка переваливаются с лапки на лапку */
+.act[data-anim="waddle"] .whole { animation: waddle calc(0.7s * var(--dur)) var(--ease) 4; }
+.act[data-anim="waddle"] .wing { animation: flap calc(0.7s * var(--dur)) var(--ease) 4; }
+
+/* панда подносит бамбук ко рту и жуёт */
+.act[data-anim="munch"] .bamboo { animation: munch calc(1.2s * var(--dur)) var(--ease) 2; }
+.act[data-anim="munch"] .head { animation: nod calc(0.6s * var(--dur)) var(--ease) 4; }
+
+/* краб бегает боком и машет клешнёй */
+.act[data-anim="scuttle"] .whole { animation: scuttle calc(2.4s * var(--dur)) var(--ease) 1; }
+.act[data-anim="scuttle"] .arm { animation: hello calc(0.8s * var(--dur)) var(--ease) 3; }
+
+/* осьминог шевелит щупальцами и всплывает */
+.act[data-anim="octo"] .tentacles { animation: wiggle calc(0.8s * var(--dur)) var(--ease) 3; }
+.act[data-anim="octo"] .whole { animation: lift calc(2.4s * var(--dur)) var(--ease) 1; }
+
+/* книжка: переворачивается страница */
+.act[data-anim="page"] .leaf { animation: flip calc(2.6s * var(--dur)) var(--ease) 1; }
+
+/* луна: мерцают звёздочки */
+.act[data-anim="twinkle"] .twinkle { animation: twinkle calc(1.2s * var(--dur)) var(--ease) 2; }
+.act[data-anim="twinkle"] .whole { animation: sway calc(2.4s * var(--dur)) var(--ease) 1; }
+
+/* звёздочка покачивается и «дышит» */
+.act[data-anim="twirl"] .whole { animation: twirl calc(2.6s * var(--dur)) var(--ease) 1; }
+
+/* дерево: падает яблочко */
+.act[data-anim="tree"] .apple { animation: fall calc(2.6s * var(--dur)) ease-in 1; }
+.act[data-anim="tree"] .whole { animation: sway calc(2.6s * var(--dur)) var(--ease) 1; }
+
+/* ботинки топают по очереди */
+.act[data-anim="stomp"] .boot1 { animation: step calc(1.2s * var(--dur)) var(--ease) 2; }
+.act[data-anim="stomp"] .boot2 { animation: step calc(1.2s * var(--dur)) var(--ease) 0.6s 2; }
+
+/* кубики: верхний кубик падает на башенку */
+.act[data-anim="stack"] .top { animation: drop-in calc(1.6s * var(--dur)) var(--ease) 1; }
+
+/* матрёшка качается, как неваляшка */
+.act[data-anim="wobble"] .whole { animation: wobble calc(2.6s * var(--dur)) var(--ease) 1; }
+
+@keyframes cruise {
+  0%, 100% { transform: translate(0, 0); }
+  25% { transform: translate(calc(-26px * var(--amp)), calc(-4px * var(--amp))); }
+  50% { transform: translate(0, 0); }
+  75% { transform: translate(calc(26px * var(--amp)), calc(-4px * var(--amp))); }
+}
+
+@keyframes rise {
+  0% { transform: translateY(calc(30px * var(--amp))); opacity: 0; }
+  30% { opacity: 1; }
+  100% { transform: translateY(calc(-30px * var(--amp))); opacity: 0; }
+}
+
+@keyframes loop {
+  0%, 100% { transform: translate(0, 0); }
+  25% { transform: translate(calc(-28px * var(--amp)), calc(-16px * var(--amp))); }
+  50% { transform: translate(0, calc(-32px * var(--amp))); }
+  75% { transform: translate(calc(28px * var(--amp)), calc(-16px * var(--amp))); }
+}
+
+@keyframes toss {
+  0%, 100% { transform: translateY(0); }
+  45% { transform: translateY(calc(-70px * var(--amp))) rotate(calc(90deg * var(--amp))); }
+}
+
+@keyframes drip {
+  0% { transform: translateY(-10px); opacity: 0; }
+  20% { opacity: 1; }
+  100% { transform: translateY(calc(60px * var(--amp))); opacity: 0; }
+}
+
+@keyframes dive {
+  0%, 100% { transform: translate(0, 0) rotate(0deg); }
+  30% { transform: translate(calc(-20px * var(--amp)), calc(60px * var(--amp))) rotate(calc(-18deg * var(--amp))); }
+  65% { transform: translate(calc(24px * var(--amp)), calc(-56px * var(--amp))) rotate(calc(12deg * var(--amp))); }
+}
+
+@keyframes jump {
+  0%, 100% { transform: translateY(0) scale(1, 1); }
+  20% { transform: translateY(0) scale(1.06, 0.9); }
+  50% { transform: translateY(calc(-50px * var(--amp))) scale(0.96, 1.05); }
+  80% { transform: translateY(0) scale(1.05, 0.93); }
+}
+
+@keyframes look {
+  0%, 100% { transform: rotate(0deg); }
+  25%, 40% { transform: rotate(calc(-16deg * var(--amp))); }
+  65%, 80% { transform: rotate(calc(16deg * var(--amp))); }
+}
+
+@keyframes crow {
+  0%, 100% { transform: rotate(0deg); }
+  30%, 70% { transform: rotate(calc(-18deg * var(--amp))); }
+}
+
+@keyframes waddle {
+  0%, 100% { transform: rotate(0deg); }
+  25% { transform: rotate(calc(7deg * var(--amp))); }
+  75% { transform: rotate(calc(-7deg * var(--amp))); }
+}
+
+@keyframes munch {
+  0%, 100% { transform: translate(0, 0) rotate(0deg); }
+  45%, 60% { transform: translate(calc(-12px * var(--amp)), calc(-34px * var(--amp))) rotate(calc(-22deg * var(--amp))); }
+}
+
+@keyframes scuttle {
+  0%, 100% { transform: translateX(0); }
+  25% { transform: translateX(calc(-30px * var(--amp))); }
+  75% { transform: translateX(calc(30px * var(--amp))); }
+}
+
+@keyframes wiggle {
+  0%, 100% { transform: skewX(0deg); }
+  25% { transform: skewX(calc(8deg * var(--amp))); }
+  75% { transform: skewX(calc(-8deg * var(--amp))); }
+}
+
+@keyframes flip {
+  0%, 100% { transform: scaleX(1); }
+  40%, 65% { transform: scaleX(-1); }
+}
+
+@keyframes twinkle {
+  0%, 100% { opacity: 1; transform: scale(1); }
+  50% { opacity: 0.35; transform: scale(0.85); }
+}
+
+@keyframes twirl {
+  0%, 100% { transform: rotate(0deg) scale(1); }
+  30% { transform: rotate(calc(-20deg * var(--amp))) scale(1.06); }
+  70% { transform: rotate(calc(20deg * var(--amp))) scale(1.06); }
+}
+
+@keyframes fall {
+  0% { transform: translateY(0); }
+  45% { transform: translateY(calc(180px * var(--amp))); }
+  55% { transform: translateY(calc(160px * var(--amp))); }
+  65%, 85% { transform: translateY(calc(180px * var(--amp))); opacity: 1; }
+  95% { opacity: 0; }
+  100% { transform: translateY(0); opacity: 1; }
+}
+
+@keyframes step {
+  0%, 100% { transform: translateY(0) rotate(0deg); }
+  40% { transform: translateY(calc(-34px * var(--amp))) rotate(calc(-6deg * var(--amp))); }
+}
+
+@keyframes drop-in {
+  0% { transform: translateY(calc(-150px * var(--amp))); opacity: 0; }
+  15% { opacity: 1; }
+  55% { transform: translateY(0); }
+  70% { transform: translateY(calc(-16px * var(--amp))); }
+  85%, 100% { transform: translateY(0); }
+}
+
+@keyframes wobble {
+  0%, 100% { transform: rotate(0deg); }
+  15% { transform: rotate(calc(-12deg * var(--amp))); }
+  35% { transform: rotate(calc(10deg * var(--amp))); }
+  55% { transform: rotate(calc(-7deg * var(--amp))); }
+  75% { transform: rotate(calc(4deg * var(--amp))); }
+}
+
+/* глазки моргают два раза */
+.act[data-anim="wink"] .eyes { animation: wink calc(0.8s * var(--dur)) var(--ease) 3; }
+/* носик «нюхает» */
+.act[data-anim="sniff"] .nose { animation: sniff calc(0.6s * var(--dur)) var(--ease) 4; }
+/* ушки шевелятся */
+.act[data-anim="ears"] .ears { animation: wiggle-ears calc(0.8s * var(--dur)) var(--ease) 3; }
+/* ротик: большая улыбка «ам» */
+.act[data-anim="smile"] .mouth { animation: sniff calc(0.8s * var(--dur)) var(--ease) 3; }
+/* гусеница ползёт волной */
+.act[data-anim="inch"] .seg { animation: hop calc(0.8s * var(--dur)) var(--ease) 3; }
+.act[data-anim="inch"] .seg:nth-child(2) { animation-delay: 0.12s; }
+.act[data-anim="inch"] .seg:nth-child(3) { animation-delay: 0.24s; }
+.act[data-anim="inch"] .seg:nth-child(4) { animation-delay: 0.36s; }
+.act[data-anim="inch"] .whole { animation: crawl calc(2.6s * var(--dur)) var(--ease) 1; }
+/* ванна: поднимаются пузыри */
+.act[data-anim="bath"] .bubbles { animation: rise calc(1.3s * var(--dur)) var(--ease) 2; }
+/* зубная щётка «чистит» */
+.act[data-anim="brush"] .whole { animation: brush calc(0.6s * var(--dur)) var(--ease) 4; }
+/* гитара: струны дрожат, гитара покачивается */
+.act[data-anim="strum"] .strings { animation: wiggle calc(0.3s * var(--dur)) var(--ease) 6; }
+.act[data-anim="strum"] .whole { animation: sway calc(2.4s * var(--dur)) var(--ease) 1; }
+/* пианино: клавиши нажимаются по очереди */
+.act[data-anim="play"] .key { animation: press calc(0.5s * var(--dur)) var(--ease) 2; }
+/* клавиши — 3…8-й прямоугольники рисунка (до них корпус и панель) */
+.act[data-anim="play"] .key:nth-of-type(4) { animation-delay: 0.2s; }
+.act[data-anim="play"] .key:nth-of-type(5) { animation-delay: 0.4s; }
+.act[data-anim="play"] .key:nth-of-type(6) { animation-delay: 0.6s; }
+.act[data-anim="play"] .key:nth-of-type(7) { animation-delay: 0.8s; }
+.act[data-anim="play"] .key:nth-of-type(8) { animation-delay: 1s; }
+/* дудочка: вылетают нотки */
+.act[data-anim="notes"] .notes { animation: rise calc(1.3s * var(--dur)) var(--ease) 2; }
+.act[data-anim="notes"] .whole { animation: nod calc(0.65s * var(--dur)) var(--ease) 4; }
+/* колокольчик и вишенки качаются, подвешенные сверху */
+.act[data-anim="swing"] .whole { animation: wobble calc(2.6s * var(--dur)) var(--ease) 1; }
+/* кран поднимает и опускает груз */
+.act[data-anim="hoist"] .hook { animation: hoist calc(2.6s * var(--dur)) var(--ease) 1; }
+
+@keyframes wink {
+  0%, 30%, 100% { transform: scaleY(1); }
+  15% { transform: scaleY(0.1); }
+}
+
+@keyframes sniff {
+  0%, 100% { transform: scale(1); }
+  50% { transform: scale(calc(1 + 0.25 * var(--amp))); }
+}
+
+@keyframes wiggle-ears {
+  0%, 100% { transform: scaleX(1); }
+  50% { transform: scaleX(calc(1 + 0.12 * var(--amp))); }
+}
+
+@keyframes brush {
+  0%, 100% { transform: translateX(0); }
+  50% { transform: translateX(calc(-22px * var(--amp))); }
+}
+
+@keyframes press {
+  0%, 100% { transform: translateY(0); }
+  40% { transform: translateY(calc(10px * var(--amp))); }
+}
+
+@keyframes hoist {
+  0%, 100% { transform: translateY(0); }
+  50% { transform: translateY(calc(-90px * var(--amp))); }
+}
+
+/* солнышко: лучики поворачиваются */
+.act[data-anim="shine"] .rays { animation: shine calc(2.6s * var(--dur)) var(--ease) 1; }
+@keyframes shine {
+  0%, 100% { transform: rotate(0deg); }
+  50% { transform: rotate(calc(15deg * var(--amp))); }
+}
+
+/* краб машет клешнёй */
+.act[data-anim="hello"] .arm { animation: hello calc(1.1s * var(--dur)) var(--ease) 2; }
+.act[data-anim="hello"] .whole { animation: hop calc(1.1s * var(--dur)) var(--ease) 2; }
+
+/* ракета: огонёк снизу и плавный подъём */
+.act[data-anim="launch"] .spout { animation: spout calc(2.4s * var(--dur)) var(--ease) 1; }
+.act[data-anim="launch"] .whole { animation: lift calc(2.4s * var(--dur)) var(--ease) 1; }
+
+/* морковка: листики шевелятся */
+.act[data-anim="sway"] .leaves { animation: wag calc(1.2s * var(--dur)) var(--ease) 2; }
+
+@keyframes flutter {
+  0%, 100% { transform: scaleX(1); }
+  50% { transform: scaleX(calc(1 - 0.4 * var(--amp))); }
+}
+
+@keyframes crawl {
+  0%, 100% { transform: translateX(0); }
+  50% { transform: translateX(calc(-22px * var(--amp))); }
+}
+
+/* Снупи: медленный «танец» — покачивается и машет ухом */
+.act[data-anim="dance"] .whole { animation: sway calc(2.4s * var(--dur)) var(--ease) 1; }
+.act[data-anim="dance"] .ear { animation: wag calc(1.2s * var(--dur)) var(--ease) 2; }
+.act[data-anim="dance"] .tail { animation: wag calc(0.8s * var(--dur)) var(--ease) 3; }
+
+/* бабушка машет рукой */
+.act[data-anim="wave"] .arm { animation: hello calc(1.1s * var(--dur)) var(--ease) 2; }
+.act[data-anim="wave"] .head { animation: tilt calc(2.2s * var(--dur)) var(--ease) 1; }
+
+/* слон поднимает хобот */
+.act[data-anim="trunk"] .trunk { animation: trunk-up calc(2.4s * var(--dur)) var(--ease) 1; }
+
+/* кит пускает фонтанчик и чуть покачивается на волне */
+.animal-svg .spout { transform: scaleY(0.15); opacity: 0; }
+.act[data-anim="spout"] .spout { animation: spout calc(2.4s * var(--dur)) var(--ease) 1; }
+.act[data-anim="spout"] .whole { animation: hop calc(1.2s * var(--dur)) var(--ease) 2; }
+.act[data-anim="spout"] .tail { animation: wag calc(1.2s * var(--dur)) var(--ease) 2; }
+
+/* машина и мотоцикл: крутятся колёса, лёгкий подскок */
+.act[data-anim="drive"] .wheel { animation: roll calc(2.4s * var(--dur)) var(--ease) 1; }
+.act[data-anim="drive"] .whole { animation: cruise calc(2.4s * var(--dur)) var(--ease) 1; }
+
+/* самолёт пролетает чуть вперёд и назад */
+.act[data-anim="fly"] .whole { animation: fly calc(2.6s * var(--dur)) var(--ease) 1; }
+
+/* вертолёт: винт «крутится» (мягко), вертолёт чуть поднимается */
+.act[data-anim="spin"] .rotor { animation: rotor calc(0.6s * var(--dur)) linear 4; }
+.act[data-anim="spin"] .tailrotor { animation: tailrotor calc(0.6s * var(--dur)) linear 4; }
+.act[data-anim="spin"] .whole { animation: lift calc(2.4s * var(--dur)) var(--ease) 1; }
+
+/* телефон звонит: трубка подпрыгивает */
+.act[data-anim="ring"] .handset { animation: ring calc(0.6s * var(--dur)) var(--ease) 3; }
+
+@keyframes hello {
+  0%, 100% { transform: rotate(0deg); }
+  50% { transform: rotate(calc(-22deg * var(--amp))); }
+}
+
+@keyframes trunk-up {
+  0%, 100% { transform: rotate(0deg); }
+  45%, 60% { transform: rotate(calc(-38deg * var(--amp))); }
+}
+
+@keyframes spout {
+  0% { transform: scaleY(0.15); opacity: 0; }
+  30%, 70% { transform: scaleY(1); opacity: 1; }
+  100% { transform: scaleY(0.15); opacity: 0; }
+}
+
+@keyframes roll {
+  from { transform: rotate(0deg); }
+  to { transform: rotate(720deg); }
+}
+
+@keyframes fly {
+  0%, 100% { transform: translate(0, 0) rotate(0deg); }
+  35% { transform: translate(calc(-18px * var(--amp)), calc(6px * var(--amp))) rotate(calc(3deg * var(--amp))); }
+  70% { transform: translate(calc(22px * var(--amp)), calc(-14px * var(--amp))) rotate(calc(-5deg * var(--amp))); }
+}
+
+@keyframes rotor {
+  0%, 100% { transform: scaleX(1); }
+  50% { transform: scaleX(0.15); }
+}
+
+@keyframes tailrotor {
+  0%, 100% { transform: scaleY(1); }
+  50% { transform: scaleY(0.2); }
+}
+
+@keyframes lift {
+  0%, 100% { transform: translateY(0); }
+  50% { transform: translateY(calc(-18px * var(--amp))); }
+}
+
+@keyframes ring {
+  0%, 100% { transform: translateY(0) rotate(0deg); }
+  30% { transform: translateY(calc(-10px * var(--amp))) rotate(calc(-4deg * var(--amp))); }
+  65% { transform: translateY(calc(-10px * var(--amp))) rotate(calc(4deg * var(--amp))); }
+}
+
+/* коровка и лошадка: кивают */
+.act[data-anim="nod"] .head { animation: nod calc(1.2s * var(--dur)) var(--ease) 2; }
+
+/* курочка: клюёт зёрнышки */
+.act[data-anim="peck"] .head { animation: peck calc(1.1s * var(--dur)) var(--ease) 2; }
+.act[data-anim="peck"] .wing { animation: flap calc(2.2s * var(--dur)) var(--ease) 1; }
+
+@keyframes nod {
+  0%, 100% { transform: rotate(0deg); }
+  50% { transform: rotate(calc(6deg * var(--amp))); }
+}
+
+@keyframes peck {
+  0%, 100% { transform: rotate(0deg); }
+  50% { transform: rotate(calc(-14deg * var(--amp))); }
+}
+
+@keyframes wag {
+  0%, 100% { transform: rotate(0deg); }
+  50% { transform: rotate(calc(14deg * var(--amp))); }
+}
+
+@keyframes tilt {
+  0%, 100% { transform: rotate(0deg); }
+  50% { transform: rotate(calc(-5deg * var(--amp))); }
+}
+
+@keyframes sway {
+  0%, 100% { transform: rotate(0deg); }
+  25% { transform: rotate(calc(4deg * var(--amp))); }
+  75% { transform: rotate(calc(-4deg * var(--amp))); }
+}
+
+@keyframes hop {
+  0%, 100% { transform: translateY(0); }
+  50% { transform: translateY(calc(-16px * var(--amp))); }
+}
+
+@keyframes peek {
+  0%, 100% { transform: translateX(0); }
+  40%, 55% { transform: translateX(calc(-34px * var(--amp))); }
+}
+
+@keyframes flap {
+  0%, 100% { transform: rotate(0deg); }
+  50% { transform: rotate(calc(-20deg * var(--amp))); }
+}
+
+/* ---------- шестерёнка: заметна взрослому, неинтересна ребёнку ---------- */
+
+.gear {
+  position: fixed;
+  right: 18px;
+  bottom: 18px;
+  width: 56px;
+  height: 56px;
+  opacity: 0.28;
+  touch-action: none;
+  transition: opacity 0.6s var(--ease);
+}
+
+.gear.holding { opacity: 0.8; }
+
+.gear svg { width: 100%; height: 100%; transform: rotate(-90deg); }
+
+.gear .ring {
+  fill: none;
+  stroke: var(--ink);
+  stroke-width: 4;
+  stroke-linecap: round;
+  stroke-dasharray: 176;
+  stroke-dashoffset: 176;
+  transition: stroke-dashoffset 0.3s var(--ease);
+}
+
+.gear.holding .ring {
+  stroke-dashoffset: 0;
+  transition: stroke-dashoffset 3s linear;
+}
+
+.gear .cog-teeth {
+  fill: none;
+  stroke: var(--ink-soft);
+  stroke-width: 8;
+  stroke-dasharray: 5.1 5.1;
+}
+
+.gear .cog-hub { fill: none; stroke: var(--ink-soft); stroke-width: 5; }
+
+/* ---------- панель настроек (для взрослого, обычный курсор) ---------- */
+
+.settings {
+  position: fixed;
+  inset: 0;
+  display: grid;
+  place-items: center;
+  background: rgba(251, 246, 238, 0.85);
+}
+
+.settings[hidden] { display: none; }
+
+.settings, .settings * { cursor: auto; }
+.settings button, .settings input { cursor: pointer; }
+
+.settings-box {
+  width: min(520px, calc(100vw - 32px));
+  background: var(--card);
+  border-radius: 24px;
+  box-shadow: var(--shadow);
+  padding: 28px 32px;
+  font-size: 18px;
+}
+
+.settings h2 { margin: 0 0 20px; font-size: 24px; font-weight: 600; }
+
+.settings .row {
+  display: flex;
+  align-items: center;
+  gap: 16px;
+  margin-bottom: 18px;
+}
+
+.settings .row span { flex: 1; }
+.settings input[type="range"] { width: 180px; accent-color: var(--ink); }
+.settings input[type="checkbox"] { width: 22px; height: 22px; accent-color: var(--ink); }
+.settings output { width: 48px; text-align: right; color: var(--ink-soft); }
+
+.settings .hint { color: var(--ink-soft); font-size: 15px; line-height: 1.4; margin: 6px 0 20px; }
+
+.settings .buttons { display: flex; flex-wrap: wrap; gap: 10px; }
+
+.settings .buttons button {
+  padding: 10px 18px;
+  border-radius: 14px;
+  background: #F3ECE2;
+}
+
+.settings .buttons .primary { background: var(--ink); color: var(--card); margin-left: auto; }
+
+/* ---------- микрофон ---------- */
+
+.voice-controls {
+  position: fixed;
+  left: 0;
+  right: 0;
+  bottom: 2vh;
+  display: flex;
+  justify-content: center;
+  align-items: flex-start;
+  gap: 18px;
+  opacity: 0;
+  visibility: hidden;
+  transition: opacity 0.8s var(--ease), visibility 0s 0.8s;
+}
+
+.voice-divider {
+  width: 1px;
+  height: 72px;
+  margin: 12px 14px 0;
+  background: #E6DCCF;
+}
+
+body.started .voice-controls {
+  opacity: 1;
+  visibility: visible;
+  transition: opacity 0.8s var(--ease), visibility 0s;
+}
+
+body.no-voice .adult-item { display: none; }
+
+.voice-item {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 6px;
+  width: 112px;
+}
+
+.voice-caption {
+  font-size: 15px;
+  color: var(--ink-soft);
+  white-space: nowrap;
+}
+
+.mic {
+  width: 96px;
+  height: 96px;
+  border-radius: 50%;
+  background: var(--card);
+  box-shadow: var(--shadow);
+  color: var(--ink);
+  display: grid;
+  place-items: center;
+  touch-action: none;
+  transition: background-color 0.6s var(--ease), color 0.6s var(--ease), box-shadow 0.6s var(--ease);
+}
+
+.mic svg { width: 48px; height: 48px; }
+
+/* Малыш: пока держат — зелёная кнопка с ровным кольцом, без мигания. */
+.mic.kid.listening {
+  background: #DCEFD3;
+  box-shadow: var(--shadow), 0 0 0 10px rgba(169, 204, 152, 0.55);
+}
+
+/* Модель учится: спокойная сиреневая обводка, подпись показывает проценты. */
+.mic.kid.training {
+  box-shadow: var(--shadow), 0 0 0 6px rgba(196, 180, 226, 0.6);
+}
+
+.mic.kid.listening + .voice-caption,
+.mic.kid.training + .voice-caption,
+.mic.on + .voice-caption { color: var(--ink); }
+
+/* Слушает: мягкий тёплый ореол медленно «дышит», без мигания. */
+.mic.on {
+  background: #F8E6D6;
+  color: var(--ink);
+  animation: breathe calc(2.4s * var(--dur)) var(--ease) infinite;
+}
+
+@keyframes breathe {
+  0%, 100% { box-shadow: var(--shadow), 0 0 0 0 rgba(236, 196, 164, 0.55); }
+  50% { box-shadow: var(--shadow), 0 0 0 calc(18px * var(--amp)) rgba(236, 196, 164, 0.25); }
+}
+
+/* Что услышал микрофон: мелко и бледно, в углу, для взрослого. */
+.heard {
+  position: fixed;
+  left: 18px;
+  bottom: 18px;
+  max-width: 34vw;
+  font-size: 14px;
+  color: var(--ink-soft);
+  opacity: 0.8;
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
+
+.settings h3 { margin: 22px 0 8px; font-size: 18px; font-weight: 600; }
+.settings .status { margin: 0 0 6px; font-size: 15px; line-height: 1.4; color: var(--ink-soft); }
+.settings .status:empty { display: none; }
+.settings #voice-install-row { margin: 8px 0 14px; }
+
+/* ---------- голос малыша ---------- */
+
+.settings select {
+  font: inherit;
+  font-size: 16px;
+  padding: 6px 10px;
+  border-radius: 10px;
+  border: 1px solid #E6DCCF;
+  background: #FBF6EE;
+  color: var(--ink);
+}
+
+.child-panel { background: rgba(251, 246, 238, 0.92); }
+
+.settings-box.wide {
+  width: min(680px, calc(100vw - 32px));
+  max-height: calc(100vh - 32px);
+  overflow-y: auto;
+}
+
+.child-rows { margin: 14px 0 18px; }
+
+.child-row {
+  display: grid;
+  grid-template-columns: 1fr auto auto auto auto;
+  align-items: center;
+  gap: 10px;
+  padding: 8px 0;
+  border-bottom: 1px solid #F1EAE0;
+}
+
+.child-row.noise { border-bottom: 0; padding-top: 14px; }
+.child-row .count { color: var(--ink-soft); font-size: 15px; min-width: 56px; text-align: right; }
+.child-row .count.ok { color: #6E9A62; }
+
+.child-row button {
+  padding: 8px 14px;
+  border-radius: 12px;
+  background: #F3ECE2;
+}
+
+.child-row .rec { min-width: 132px; }
+.child-row .rec.recording { background: #F6DCC6; }
+.settings button:disabled { opacity: 0.4; cursor: default; }
+
+.progress {
+  height: 8px;
+  margin: 0 0 16px;
+  border-radius: 4px;
+  background: #F1EAE0;
+  overflow: hidden;
+}
+
+.progress > div {
+  height: 100%;
+  width: 0;
+  background: #A9CC98;
+  transition: width 0.4s var(--ease);
+}
+
+/* Подсказка над кнопками: для взрослого, что сейчас происходит с голосом малыша. */
+.kid-bubble {
+  position: fixed;
+  left: 50%;
+  bottom: calc(var(--mic-space) + 4px);
+  transform: translateX(-50%);
+  width: min(720px, calc(100vw - 32px));
+  padding: 12px 16px;
+  border-radius: 18px;
+  background: rgba(255, 253, 248, 0.96);
+  box-shadow: var(--shadow);
+  text-align: center;
+  animation: fade-in 0.4s var(--ease);
+}
+
+.kid-bubble[hidden] { display: none; }
+.kid-bubble p { margin: 0; font-size: 17px; color: var(--ink); }
+.kid-bubble .progress { margin: 10px 0 0; }
+
+.kid-actions {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  gap: 8px;
+}
+
+.kid-actions:not(:empty) { margin-top: 10px; }
+
+.kid-actions button {
+  padding: 8px 16px;
+  border-radius: 12px;
+  background: #F3ECE2;
+  font-size: 16px;
+}
+
+.kid-actions button.yes { background: #DCEFD3; }
+
+.kid-actions .kid-animal {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 2px;
+  width: 72px;
+  padding: 6px 4px;
+}
+
+.kid-animal-pic {
+  width: 52px;
+  height: 52px;
+  border-radius: 50%;
+  background: var(--c);
+  display: block;
+  padding: 3px;
+}
+
+.kid-animal-pic svg { width: 100%; height: 100%; }
+.kid-animal-pic img { width: 100%; height: 100%; border-radius: 50%; object-fit: cover; display: block; }
+
+.kid-animal-name { font-size: 12px; color: var(--ink-soft); }
+
+/* «Похоже на…»: самые вероятные варианты — крупнее */
+.kid-actions .kid-animal.near { width: 100px; }
+.kid-actions .kid-animal.near .kid-animal-pic { width: 76px; height: 76px; }
+.kid-actions .kid-animal.near .kid-animal-name { font-size: 14px; color: var(--ink); }
+
+/* ---------- видеокружок ---------- */
+
+.kruzhok {
+  position: absolute;
+  right: -24%;
+  bottom: 16%;
+  width: 44%;
+  aspect-ratio: 1;
+  border-radius: 50%;
+  overflow: hidden;
+  border: 8px solid var(--card);
+  box-shadow: var(--shadow);
+  background: #EFE7DC;
+  opacity: 0;
+  transition: opacity 0.9s var(--ease);
+}
+
+.kruzhok[hidden] { display: none; }
+.kruzhok.shown { opacity: 1; }
+
+.kruzhok video {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  display: block;
+}
+
+/* ---------- режимы: Где? / Ку-ку / Спать ---------- */
+
+.mic.mode-btn.on {
+  background: #EFE6F5;
+  box-shadow: var(--shadow), 0 0 0 6px rgba(196, 180, 226, 0.45);
+}
+
+.mic.mode-btn.on + .voice-caption { color: var(--ink); }
+
+/* «Где котик?»: вопрос сверху, крупно и спокойно */
+.quiz {
+  position: fixed;
+  top: 2.5vh;
+  left: 50%;
+  transform: translateX(-50%);
+  padding: 12px 28px;
+  border-radius: 20px;
+  background: rgba(255, 253, 248, 0.95);
+  box-shadow: var(--shadow);
+  font-size: clamp(24px, 3.6vh, 40px);
+  font-weight: 600;
+  color: var(--ink);
+  animation: fade-in 0.6s var(--ease);
+}
+
+.quiz[hidden] { display: none; }
+/* в «Где?» сверху стоит вопрос — сетка чуть ниже */
+body[data-mode="quiz"] #grid { --top-space: 9vh; }
+
+/* «Не тот» зверь: просто мягко кивает */
+.tile.nudge .tile-animal {
+  transform-origin: 50% 90%;
+  animation: nod calc(0.7s * var(--dur)) var(--ease) 2;
+}
+
+/* Спать: по очереди машут, ложатся, закрывают глаза */
+.tile .tile-animal {
+  transform-origin: 50% 90%;
+  transition: transform 0.8s var(--ease), filter 1.2s var(--ease);
+}
+
+.tile.waving .tile-animal { animation: wave calc(0.85s * var(--dur)) var(--ease) 2; }
+
+@keyframes wave {
+  0%, 100% { transform: rotate(0deg); }
+  25% { transform: rotate(calc(9deg * var(--amp))); }
+  75% { transform: rotate(calc(-9deg * var(--amp))); }
+}
+
+/* мама и папа на время сна плавно уходят */
+.tile { transition: opacity 1s var(--ease), transform 1s var(--ease); }
+.tile.away { opacity: 0; transform: scale(0.85); }
+
+/* кроватка: спинка с подушкой за зверем, одеяло наползает снизу */
+.bed-back, .bed-front {
+  position: absolute;
+  left: 9%;
+  top: 5%;
+  width: 82%;
+  aspect-ratio: 1;
+  pointer-events: none;
+}
+
+.bed-back svg, .bed-front svg { width: 100%; height: 100%; display: block; }
+.bed-back { opacity: 0; transition: opacity 0.9s var(--ease); }
+.bed-front { overflow: hidden; }
+.bed-front svg { transform: translateY(45%); opacity: 0; transition: transform 1.1s var(--ease), opacity 0.6s var(--ease); }
+.tile.asleep .bed-back { opacity: 1; }
+.tile.asleep .bed-front svg { transform: none; opacity: 1; }
+.tile.asleep .tile-animal { transform: translateY(-2%) scale(0.86); }
+.animal-svg .eyes { transition: transform 0.9s var(--ease); }
+.tile.asleep .eyes { transform: scaleY(0.12); }
+
+body { transition: background-color 3s var(--ease); }
+body.dusk { background: #D9D0CC; }
+body.dusk #grid, body.dusk .voice-controls { transition: filter 3s var(--ease); filter: brightness(0.82); }
+body.night { background: #9C93A3; }
+
+.night {
+  position: fixed;
+  inset: 0;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  gap: 4vh;
+  background: rgba(72, 62, 84, 0);
+  transition: background-color 2.5s var(--ease);
+}
+
+.night[hidden] { display: none; }
+body.night .night { background: rgba(40, 34, 58, 0.55); }
+
+.night-text {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 10px;
+  max-width: min(640px, calc(100vw - 32px));
+  text-align: center;
+  padding: 24px 40px;
+  border-radius: 24px;
+  background: rgba(255, 253, 248, 0.92);
+  color: var(--ink);
+  opacity: 0;
+  transition: opacity 2s var(--ease) 0.5s;
+}
+
+body.night .night-text { opacity: 1; }
+.night-moon svg { width: 64px; height: 64px; }
+.night-title { font-size: clamp(28px, 5vh, 52px); font-weight: 600; }
+.night-sub { font-size: clamp(16px, 2.2vh, 22px); color: var(--ink-soft); line-height: 1.4; }
+
+.night-wake {
+  padding: 10px 20px;
+  border-radius: 14px;
+  background: rgba(255, 253, 248, 0.7);
+  font-size: 16px;
+  color: var(--ink-soft);
+}
+
+/* Ку-ку: зверь за кустиком */
+#peek { padding-bottom: var(--mic-space); }
+
+.peek-box {
+  position: relative;
+  width: min(64vw, calc(100vh - var(--mic-space) - 6vh));
+  aspect-ratio: 1;
+  overflow: hidden;
+}
+
+.peek-animal {
+  position: absolute;
+  left: 20%;
+  bottom: 0;
+  width: 60%;
+  aspect-ratio: 1;
+  transform: translateY(72%);
+  transition: transform calc(0.9s * var(--dur)) var(--ease);
+}
+
+.peek-animal.up { transform: translateY(-28%); }
+
+.peek-animal .peek-photo {
+  width: 100%;
+  height: 100%;
+  border-radius: 50%;
+  object-fit: cover;
+  border: 8px solid var(--card);
+}
+
+.bush {
+  position: absolute;
+  left: 0;
+  bottom: 0;
+  width: 100%;
+}
+
+/* любимые карточки в настройках */
+.fav-list { margin: 0 0 12px; padding-left: 22px; color: var(--ink); font-size: 16px; line-height: 1.6; }
+.fav-list .empty { list-style: none; margin-left: -22px; color: var(--ink-soft); }

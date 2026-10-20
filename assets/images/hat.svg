@@ -1,0 +1,9 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 400 400" class="animal-svg">
+  <g class="whole" style="transform-origin:200px 330px" stroke="#6E5A50" stroke-width="7" stroke-linejoin="round" stroke-linecap="round">
+    <circle cx="200" cy="80" r="34" fill="#F4C6C0"/>
+    <path d="M80 270 C 80 160, 130 110, 200 110 C 270 110, 320 160, 320 270 Z" fill="#EE9F92"/>
+    <path d="M110 190 H290 M96 230 H304" fill="none" stroke="#F8C2BA" stroke-width="14"/>
+    <rect x="66" y="262" width="268" height="54" rx="20" fill="#E48C7E"/>
+    <path d="M100 274 V306 M140 274 V306 M180 274 V306 M220 274 V306 M260 274 V306 M300 274 V306" fill="none" stroke-width="4" opacity=".4"/>
+  </g>
+</svg>

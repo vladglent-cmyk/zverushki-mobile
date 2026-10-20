@@ -1,0 +1,25 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 400 400" class="animal-svg">
+  <g class="whole" style="transform-origin:200px 300px" stroke="#6E5A50" stroke-width="7" stroke-linejoin="round" stroke-linecap="round">
+    <!-- фонтанчик -->
+    <g class="part spout" style="transform-origin:160px 176px">
+      <path d="M160 176 C 156 140, 150 118, 128 104 M160 176 C 162 136, 166 112, 190 98 M160 176 V96" fill="none" stroke="#9CC9E8" stroke-width="9"/>
+      <g fill="#BFE0F5" stroke="#6E5A50" stroke-width="4">
+        <circle cx="124" cy="98" r="10"/><circle cx="160" cy="86" r="11"/><circle cx="196" cy="92" r="10"/>
+      </g>
+    </g>
+    <!-- хвост -->
+    <g class="part tail" style="transform-origin:318px 262px">
+      <path d="M312 268 C 330 236, 350 214, 372 206 C 362 230, 362 248, 376 268 C 356 268, 336 274, 318 292 Z" fill="#8FB8D9"/>
+    </g>
+    <!-- тело -->
+    <path d="M44 262 C 44 196, 104 172, 176 176 C 252 180, 318 214, 322 276 C 324 320, 270 338, 196 338 C 110 338, 44 316, 44 262 Z" fill="#9CC3E0"/>
+    <path d="M60 290 C 110 322, 230 330, 300 300 C 290 324, 250 334, 196 334 C 130 334, 78 318, 60 290 Z" fill="#DDEBF6" stroke="none"/>
+    <path d="M120 300 Q160 290 170 320" fill="#8FB8D9" stroke-width="6"/>
+    <circle cx="96" cy="270" r="13" fill="#F4B6B0" stroke="none" opacity=".6"/>
+    <g class="eyes" style="transform-origin:104px 244px" stroke="none">
+      <ellipse cx="104" cy="244" rx="10" ry="13" fill="#4A3B35"/>
+      <circle cx="107" cy="239" r="3.5" fill="#fff"/>
+    </g>
+    <path d="M58 282 Q80 296 104 290" fill="none" stroke-width="5"/>
+  </g>
+</svg>

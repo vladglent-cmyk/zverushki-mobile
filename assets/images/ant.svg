@@ -1,0 +1,18 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 400 400" class="animal-svg">
+  <g class="whole" style="transform-origin:200px 330px" stroke="#6E5A50" stroke-width="7" stroke-linejoin="round" stroke-linecap="round">
+    <path d="M140 270 L110 330 M200 270 L200 336 M250 270 L290 330 M140 250 L100 210 M250 250 L290 210" fill="none" stroke-width="7"/>
+    <ellipse cx="110" cy="260" rx="60" ry="46" fill="#8C6A5F"/>
+    <ellipse cx="200" cy="260" rx="40" ry="32" fill="#8C6A5F"/>
+    <path d="M300 200 Q290 150 270 140 M320 200 Q340 150 360 146" fill="none" stroke-width="5"/>
+    <circle cx="300" cy="240" r="50" fill="#8C6A5F"/>
+    <circle cx="282" cy="262" r="9" fill="#F4B6B0" stroke="none" opacity=".65"/>
+    <circle cx="322" cy="262" r="9" fill="#F4B6B0" stroke="none" opacity=".65"/>
+    <g class="eyes" style="transform-origin:301px 232px" stroke="none">
+      <ellipse cx="286" cy="232" rx="7" ry="9" fill="#4A3B35"/>
+      <circle cx="289" cy="228" r="3" fill="#fff"/>
+      <ellipse cx="316" cy="232" rx="7" ry="9" fill="#4A3B35"/>
+      <circle cx="319" cy="228" r="3" fill="#fff"/>
+    </g>
+    <path d="M290 262 Q300 276 310 262" fill="none" stroke-width="5"/>
+  </g>
+</svg>

@@ -1,0 +1,10 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 400 400" class="animal-svg">
+  <g class="whole" style="transform-origin:200px 330px" stroke="#6E5A50" stroke-width="7" stroke-linejoin="round" stroke-linecap="round">
+    <g class="part wheel" style="transform-origin:100px 280px"><circle cx="100" cy="280" r="66" fill="none" stroke-width="10"/><circle cx="100" cy="280" r="54" fill="#FFF6EE" stroke="none" opacity=".6"/><path d="M100 226 V334 M46 280 H154" fill="none" stroke-width="3" opacity=".5"/><circle cx="100" cy="280" r="9" fill="#6E5A50"/></g>
+    <g class="part wheel" style="transform-origin:300px 280px"><circle cx="300" cy="280" r="66" fill="none" stroke-width="10"/><circle cx="300" cy="280" r="54" fill="#FFF6EE" stroke="none" opacity=".6"/><path d="M300 226 V334 M246 280 H354" fill="none" stroke-width="3" opacity=".5"/><circle cx="300" cy="280" r="9" fill="#6E5A50"/></g>
+    <path d="M100 280 L170 200 H270 L300 280 M170 200 L200 280 L270 200 M200 280 L100 280" fill="none" stroke="#7DBFB2" stroke-width="12"/>
+    <path d="M160 190 C 150 176, 170 168, 200 172 C 196 182, 180 190, 160 190 Z" fill="#8C6A5F"/>
+    <path d="M270 200 L258 156 M240 148 L280 140" fill="none" stroke-width="9"/>
+    <circle cx="200" cy="280" r="16" fill="#D9D4CF"/>
+  </g>
+</svg>

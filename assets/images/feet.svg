@@ -1,0 +1,12 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 400 400" class="animal-svg">
+  <g class="whole" style="transform-origin:200px 360px" stroke="#6E5A50" stroke-width="7" stroke-linejoin="round" stroke-linecap="round">
+    <g class="part boot1" style="transform-origin:140px 340px">
+      <path d="M140 340 C 100 340, 90 290, 100 240 C 110 190, 180 190, 186 240 C 192 290, 180 340, 140 340 Z" fill="#F6D5BE"/>
+      <g fill="#F6D5BE"><circle cx="110" cy="186" r="14"/><circle cx="134" cy="176" r="12"/><circle cx="156" cy="178" r="11"/><circle cx="174" cy="188" r="10"/><circle cx="186" cy="204" r="9"/></g>
+    </g>
+    <g class="part boot2" style="transform-origin:260px 340px">
+      <path d="M250 340 C 210 340, 200 290, 210 240 C 220 190, 290 190, 296 240 C 302 290, 290 340, 250 340 Z" fill="#F6D5BE"/>
+      <g fill="#F6D5BE"><circle cx="220" cy="186" r="14"/><circle cx="244" cy="176" r="12"/><circle cx="266" cy="178" r="11"/><circle cx="284" cy="188" r="10"/><circle cx="296" cy="204" r="9"/></g>
+    </g>
+  </g>
+</svg>

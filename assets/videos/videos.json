@@ -1,0 +1,848 @@
+{
+  "cat": {
+    "file": "assets/videos/cat.webm",
+    "start": 0.0,
+    "end": 7.0,
+    "title": "Three orange kittens following their mother",
+    "author": "Jeromi Mikhael",
+    "license": "CC0",
+    "source": "https://commons.wikimedia.org/wiki/File:Three_orange_kittens_following_their_mother.webm"
+  },
+  "monkey": {
+    "file": "assets/videos/monkey.webm",
+    "start": 0.0,
+    "end": 6.0,
+    "title": "Baby monkey eating",
+    "author": "Free Videos",
+    "license": "CC0",
+    "source": "https://commons.wikimedia.org/wiki/File:Baby_monkey_eating.webm"
+  },
+  "panda": {
+    "file": "assets/videos/panda.webm",
+    "start": 9.0,
+    "end": 15.0,
+    "title": "Panda San Diego Zoo",
+    "author": "Abujoy",
+    "license": "CC BY-SA 3.0",
+    "source": "https://commons.wikimedia.org/wiki/File:Panda_San_Diego_Zoo.ogv"
+  },
+  "turtle": {
+    "file": "assets/videos/turtle.webm",
+    "start": 3.0,
+    "end": 10.0,
+    "title": "Galapagos tortoise (Chelonoidis nigra)",
+    "author": "pantxorama",
+    "license": "CC BY-SA 2.0",
+    "source": "https://commons.wikimedia.org/wiki/File:Galapagos_tortoise_(Chelonoidis_nigra).webm"
+  },
+  "duck": {
+    "file": "assets/videos/duck.webm",
+    "start": 1.0,
+    "end": 8.0,
+    "title": "20250626 mallard hen with chicks glastonbury meadows wm",
+    "author": "Paul Danese",
+    "license": "CC BY-SA 4.0",
+    "source": "https://commons.wikimedia.org/wiki/File:20250626_mallard_hen_with_chicks_glastonbury_meadows_wm.webm"
+  },
+  "dog": {
+    "file": "assets/videos/dog.webm",
+    "start": 0.5,
+    "end": 7.0,
+    "title": "German shepherd eating apple (2)",
+    "author": "Shadster",
+    "license": "CC BY-SA 4.0",
+    "source": "https://commons.wikimedia.org/wiki/File:German_shepherd_eating_apple_(2).webm"
+  },
+  "cow": {
+    "file": "assets/videos/cow.webm",
+    "start": 0.5,
+    "end": 7.0,
+    "title": "Cow grazing in the farm",
+    "author": "B722N",
+    "license": "CC BY-SA 4.0",
+    "source": "https://commons.wikimedia.org/wiki/File:Cow_grazing_in_the_farm.webm"
+  },
+  "chicken": {
+    "file": "assets/videos/chicken.webm",
+    "start": 4.0,
+    "end": 11.0,
+    "title": "Chicken Close-up 1 2017-09-10",
+    "author": "Fastily",
+    "license": "CC BY-SA 4.0",
+    "source": "https://commons.wikimedia.org/wiki/File:Chicken_Close-up_1_2017-09-10.webm"
+  },
+  "horse": {
+    "file": "assets/videos/horse.webm",
+    "start": 2.0,
+    "end": 9.0,
+    "title": "Indi broute",
+    "author": "Clément Bucco-Lechat",
+    "license": "CC BY-SA 3.0",
+    "source": "https://commons.wikimedia.org/wiki/File:Indi_broute.ogv"
+  },
+  "sheep": {
+    "file": "assets/videos/sheep.webm",
+    "start": 1.0,
+    "end": 8.0,
+    "title": "Écomusée du pays de Rennes, mouton des landes de Bretagne",
+    "author": "Édouard Hue (User:EdouardHue)",
+    "license": "CC BY-SA 4.0",
+    "source": "https://commons.wikimedia.org/wiki/File:%C3%89comus%C3%A9e_du_pays_de_Rennes,_mouton_des_landes_de_Bretagne.ogv"
+  },
+  "pig": {
+    "file": "assets/videos/pig.webm",
+    "start": 4.0,
+    "end": 9.5,
+    "title": "Buntes Bentheimer Schwein, Sau & Ferkel",
+    "author": "5snake5",
+    "license": "CC0",
+    "source": "https://commons.wikimedia.org/wiki/File:Buntes_Bentheimer_Schwein,_Sau_%26_Ferkel.ogv"
+  },
+  "bear": {
+    "file": "assets/videos/bear.webm",
+    "start": 22.0,
+    "end": 29.0,
+    "title": "Brown Bear (Ursus arctos)",
+    "author": "U.S. Fish and Wildlife Service, National Conservation Training Center (USFWS/NCTC)",
+    "license": "Public domain",
+    "source": "https://commons.wikimedia.org/wiki/File:Brown_Bear_(Ursus_arctos).webm"
+  },
+  "giraffe": {
+    "file": "assets/videos/giraffe.webm",
+    "start": 3.0,
+    "end": 10.0,
+    "title": "Giraffe eating leaves",
+    "author": "Lennart Hessel",
+    "license": "CC BY 3.0",
+    "source": "https://commons.wikimedia.org/wiki/File:Giraffe_eating_leaves.webm"
+  },
+  "whale": {
+    "file": "assets/videos/whale.webm",
+    "start": 0.0,
+    "end": 7.0,
+    "title": "Tail of a southern right whale (Eubalaena australis)",
+    "author": "Edith Schreurs",
+    "license": "CC BY-SA 2.0",
+    "source": "https://commons.wikimedia.org/wiki/File:Tail_of_a_southern_right_whale_(Eubalaena_australis).webm"
+  },
+  "elephant": {
+    "file": "assets/videos/elephant.webm",
+    "start": 0.0,
+    "end": 6.0,
+    "title": "African Elephant Feeding in a Game Park",
+    "author": "Chapelle musa",
+    "license": "CC BY-SA 4.0",
+    "source": "https://commons.wikimedia.org/wiki/File:African_Elephant_Feeding_in_a_Game_Park.webm"
+  },
+  "banana": {
+    "file": "assets/videos/banana.webm",
+    "start": 0.0,
+    "end": 6.0,
+    "title": "Time Lapse Banana Ripening",
+    "author": "mauiwowialoha",
+    "license": "CC BY 3.0",
+    "source": "https://commons.wikimedia.org/wiki/File:Time_Lapse_Banana_Ripening.webm"
+  },
+  "watermelon": {
+    "file": "assets/videos/watermelon.webm",
+    "start": 8.0,
+    "end": 15.0,
+    "title": "Water melon",
+    "author": "Muktee1494",
+    "license": "CC BY-SA 4.0",
+    "source": "https://commons.wikimedia.org/wiki/File:Water_melon.webm"
+  },
+  "car": {
+    "file": "assets/videos/car.webm",
+    "start": 8.0,
+    "end": 15.0,
+    "title": "Multiple Citroën 2CV vehicles driving by (east Netherlands, 2022)",
+    "author": "OSeveno",
+    "license": "CC BY-SA 4.0",
+    "source": "https://commons.wikimedia.org/wiki/File:Multiple_Citro%C3%ABn_2CV_vehicles_driving_by_(east_Netherlands,_2022).webm"
+  },
+  "motorcycle": {
+    "file": "assets/videos/motorcycle.webm",
+    "start": 2.0,
+    "end": 9.0,
+    "title": "Young teenage learning how to ride a motorcycle",
+    "author": "RahimMngwaya",
+    "license": "CC BY-SA 4.0",
+    "source": "https://commons.wikimedia.org/wiki/File:Young_teenage_learning_how_to_ride_a_motorcycle.webm"
+  },
+  "plane": {
+    "file": "assets/videos/plane.webm",
+    "start": 39.0,
+    "end": 46.0,
+    "title": "United Airlines N69826 737-900ER Takeoff Portland Airport (PDX)",
+    "author": "PDX Aviation - HD(ish) Plane Spotting",
+    "license": "CC BY 3.0",
+    "source": "https://commons.wikimedia.org/wiki/File:United_Airlines_N69826_737-900ER_Takeoff_Portland_Airport_(PDX).webm"
+  },
+  "helicopter": {
+    "file": "assets/videos/helicopter.webm",
+    "start": 15.0,
+    "end": 22.0,
+    "title": "Helicopter Klinikum",
+    "author": "Hiddenhauser",
+    "license": "CC0",
+    "source": "https://commons.wikimedia.org/wiki/File:Helicopter_Klinikum.ogv"
+  },
+  "phone": {
+    "file": "assets/videos/phone.webm",
+    "start": 3.0,
+    "end": 10.0,
+    "title": "Telefon W48 von ca. 1950",
+    "author": "Maximilian Schönherr",
+    "license": "CC BY-SA 4.0",
+    "source": "https://commons.wikimedia.org/wiki/File:Telefon_W48_von_ca._1950.webm"
+  },
+  "butterfly": {
+    "file": "assets/videos/butterfly.webm",
+    "start": 2.0,
+    "end": 9.0,
+    "title": "Butterfly-1026784, Dingle Peninsula, Co. Kerry, Ireland",
+    "author": "Maoileann",
+    "license": "CC BY-SA 4.0",
+    "source": "https://commons.wikimedia.org/wiki/File:Butterfly-1026784,_Dingle_Peninsula,_Co._Kerry,_Ireland.webm"
+  },
+  "ladybug": {
+    "file": "assets/videos/ladybug.webm",
+    "start": 1.0,
+    "end": 8.0,
+    "title": "Coccinella septempunctata",
+    "author": "Pristurus",
+    "license": "CC BY-SA 3.0",
+    "source": "https://commons.wikimedia.org/wiki/File:Coccinella_septempunctata.ogv"
+  },
+  "bee": {
+    "file": "assets/videos/bee.webm",
+    "start": 17.0,
+    "end": 24.0,
+    "title": "Bees on flowers",
+    "author": "J. M. Pearson",
+    "license": "CC0",
+    "source": "https://commons.wikimedia.org/wiki/File:Bees_on_flowers.webm"
+  },
+  "snail": {
+    "file": "assets/videos/snail.webm",
+    "start": 2.0,
+    "end": 9.0,
+    "title": "Cepaea nemoralis Footage",
+    "author": "Rick Hoppmann",
+    "license": "CC BY 4.0",
+    "source": "https://commons.wikimedia.org/wiki/File:Cepaea_nemoralis_Footage.webm"
+  },
+  "ball": {
+    "file": "assets/videos/ball.webm",
+    "start": 20.0,
+    "end": 27.0,
+    "title": "Gymnastikball-Flummi",
+    "author": "Rhetos",
+    "license": "CC BY-SA 4.0",
+    "source": "https://commons.wikimedia.org/wiki/File:Gymnastikball-Flummi.webm"
+  },
+  "clock": {
+    "file": "assets/videos/clock.webm",
+    "start": 0.0,
+    "end": 7.0,
+    "title": "Andreas Huber clock ticking Wien Museum Uhrenmuseum Vienna 2024",
+    "author": "Furkan Akkurt",
+    "license": "CC BY-SA 4.0",
+    "source": "https://commons.wikimedia.org/wiki/File:Andreas_Huber_clock_ticking_Wien_Museum_Uhrenmuseum_Vienna_2024.webm"
+  },
+  "bunny": {
+    "file": "assets/videos/bunny.webm",
+    "start": 3.0,
+    "end": 10.0,
+    "title": "European Rabbit 2025 06 18 01",
+    "author": "Alexis Lours",
+    "license": "CC BY 4.0",
+    "source": "https://commons.wikimedia.org/wiki/File:European_Rabbit_2025_06_18_01.webm"
+  },
+  "hedgehog": {
+    "file": "assets/videos/hedgehog.webm",
+    "start": 3.0,
+    "end": 10.0,
+    "title": "Hedgehog peaceful in Sintra",
+    "author": "FrankBanalis",
+    "license": "CC BY 4.0",
+    "source": "https://commons.wikimedia.org/wiki/File:Hedgehog_peaceful_in_Sintra.webm"
+  },
+  "fox": {
+    "file": "assets/videos/fox.webm",
+    "start": 3.0,
+    "end": 10.0,
+    "title": "Red Fox 2025 09 28 01",
+    "author": "Alexis Lours",
+    "license": "CC BY 4.0",
+    "source": "https://commons.wikimedia.org/wiki/File:Red_Fox_2025_09_28_01.webm"
+  },
+  "squirrel": {
+    "file": "assets/videos/squirrel.webm",
+    "start": 2.0,
+    "end": 9.0,
+    "title": "Squirrel eating nut.webmhd",
+    "author": "Anton Porsche",
+    "license": "CC BY 4.0",
+    "source": "https://commons.wikimedia.org/wiki/File:Squirrel_eating_nut.webmhd.webm"
+  },
+  "owl": {
+    "file": "assets/videos/owl.webm",
+    "start": 3.0,
+    "end": 10.0,
+    "title": "2025-09-20-vdk-skt-owls-135358",
+    "author": "I13Robin",
+    "license": "CC0",
+    "source": "https://commons.wikimedia.org/wiki/File:2025-09-20-vdk-skt-owls-135358.webm"
+  },
+  "frog": {
+    "file": "assets/videos/frog.webm",
+    "start": 1.0,
+    "end": 8.0,
+    "title": "Pelophylax ridibundus call",
+    "author": "Calimo",
+    "license": "CC BY-SA 3.0",
+    "source": "https://commons.wikimedia.org/wiki/File:Pelophylax_ridibundus_call.ogv"
+  },
+  "lion": {
+    "file": "assets/videos/lion.webm",
+    "start": 3.0,
+    "end": 10.0,
+    "title": "Lions (Panthera leo)",
+    "author": "Bernard DUPONT",
+    "license": "CC BY-SA 2.0",
+    "source": "https://commons.wikimedia.org/wiki/File:Lions_(Panthera_leo).webm"
+  },
+  "fish": {
+    "file": "assets/videos/fish.webm",
+    "start": 3.0,
+    "end": 10.0,
+    "title": "Aquarium fishes (1)",
+    "author": "Gpkp",
+    "license": "CC BY-SA 4.0",
+    "source": "https://commons.wikimedia.org/wiki/File:Aquarium_fishes_(1).ogv"
+  },
+  "apple": {
+    "file": "assets/videos/apple.webm",
+    "start": 0.0,
+    "end": 6.0,
+    "title": "Browning Fuji apple - 32 minutes in 16 seconds",
+    "author": "Vassia Atanassova - Spiritia",
+    "license": "CC BY-SA 4.0",
+    "source": "https://commons.wikimedia.org/wiki/File:Browning_Fuji_apple_-_32_minutes_in_16_seconds.webm"
+  },
+  "carrot": {
+    "file": "assets/videos/carrot.webm",
+    "start": 2.0,
+    "end": 7.0,
+    "title": "Carrots, green beans and cabbage 🥬 video",
+    "author": "Muktee1494",
+    "license": "CC BY-SA 4.0",
+    "source": "https://commons.wikimedia.org/wiki/File:Carrots,_green_beans_and_cabbage_%F0%9F%A5%AC_video.webm"
+  },
+  "strawberry": {
+    "file": "assets/videos/strawberry.webm",
+    "start": 2.0,
+    "end": 9.0,
+    "title": "Strawberries by Mikani",
+    "author": "Mikani",
+    "license": "CC BY-SA 4.0",
+    "source": "https://commons.wikimedia.org/wiki/File:Strawberries_by_Mikani.webm"
+  },
+  "train": {
+    "file": "assets/videos/train.webm",
+    "start": 3.0,
+    "end": 10.0,
+    "title": "Steam Locomotive Leaving Depot 10-01-2022",
+    "author": "Grand Canyon National Park",
+    "license": "CC BY 2.0",
+    "source": "https://commons.wikimedia.org/wiki/File:Steam_Locomotive_Leaving_Depot_10-01-2022.webm"
+  },
+  "bus": {
+    "file": "assets/videos/bus.webm",
+    "start": 2.0,
+    "end": 9.0,
+    "title": "VOLVO 8400 Bus of KURTC departing from KSRTC Thiruvalla",
+    "author": "Editor8220",
+    "license": "CC BY-SA 4.0",
+    "source": "https://commons.wikimedia.org/wiki/File:VOLVO_8400_Bus_of_KURTC_departing_from_KSRTC_Thiruvalla.webm"
+  },
+  "boat": {
+    "file": "assets/videos/boat.webm",
+    "start": 1.0,
+    "end": 8.0,
+    "title": "A tradition local boat waiting for customers",
+    "author": "RahimMngwaya",
+    "license": "CC BY-SA 4.0",
+    "source": "https://commons.wikimedia.org/wiki/File:A_tradition_local_boat_waiting_for_customers.webm"
+  },
+  "bicycle": {
+    "file": "assets/videos/bicycle.webm",
+    "start": 1.0,
+    "end": 8.0,
+    "title": "Bicycle-slowmotion-ride-park-kid2013",
+    "author": "Nesnad",
+    "license": "CC BY-SA 4.0",
+    "source": "https://commons.wikimedia.org/wiki/File:Bicycle-slowmotion-ride-park-kid2013.ogv"
+  },
+  "rooster": {
+    "file": "assets/videos/rooster.webm",
+    "start": 29.0,
+    "end": 36.0,
+    "title": "Rooster prancing, pecking",
+    "author": "Uusijani",
+    "license": "CC0",
+    "source": "https://commons.wikimedia.org/wiki/File:Rooster_prancing,_pecking.webm"
+  },
+  "parrot": {
+    "file": "assets/videos/parrot.webm",
+    "start": 0.0,
+    "end": 7.0,
+    "title": "Ara ararauna - Blue and Yellow Macaw",
+    "author": "Hectonichus",
+    "license": "CC BY-SA 4.0",
+    "source": "https://commons.wikimedia.org/wiki/File:Ara_ararauna_-_Blue_and_Yellow_Macaw.webm"
+  },
+  "penguin": {
+    "file": "assets/videos/penguin.webm",
+    "start": 8.0,
+    "end": 15.0,
+    "title": "20130924 African penguins walking",
+    "author": "Vassia Atanassova - Spiritia",
+    "license": "CC BY-SA 3.0",
+    "source": "https://commons.wikimedia.org/wiki/File:20130924_African_penguins_walking.webm"
+  },
+  "pigeon": {
+    "file": "assets/videos/pigeon.webm",
+    "start": 1.0,
+    "end": 8.0,
+    "title": "Pigeon",
+    "author": "ジダネ",
+    "license": "Public domain",
+    "source": "https://commons.wikimedia.org/wiki/File:Pigeon.ogv"
+  },
+  "dolphin": {
+    "file": "assets/videos/dolphin.webm",
+    "start": 0.0,
+    "end": 7.0,
+    "title": "Spinner dolphins video",
+    "author": "Brocken Inaglory",
+    "license": "CC BY-SA 3.0",
+    "source": "https://commons.wikimedia.org/wiki/File:Spinner_dolphins_video.wmv.ogv"
+  },
+  "octopus": {
+    "file": "assets/videos/octopus.webm",
+    "start": 0.5,
+    "end": 6.5,
+    "title": "Octopus vulgaris - 5919",
+    "author": "Amada44",
+    "license": "CC BY-SA 3.0",
+    "source": "https://commons.wikimedia.org/wiki/File:Octopus_vulgaris_-_5919.ogg"
+  },
+  "crab": {
+    "file": "assets/videos/crab.webm",
+    "start": 0.0,
+    "end": 7.0,
+    "title": "Blackback land crab (Gecarcinus lateralis) in San Salvador",
+    "author": "James St. John",
+    "license": "CC BY 2.0",
+    "source": "https://commons.wikimedia.org/wiki/File:Blackback_land_crab_(Gecarcinus_lateralis)_in_San_Salvador.webm"
+  },
+  "cup": {
+    "file": "assets/videos/cup.webm",
+    "start": 2.0,
+    "end": 9.0,
+    "title": "Tea Leaf Paradox Stirring",
+    "author": "Apoc2400",
+    "license": "CC BY-SA 3.0",
+    "source": "https://commons.wikimedia.org/wiki/File:Tea_Leaf_Paradox_Stirring.ogv"
+  },
+  "spoon": {
+    "file": "assets/videos/spoon.webm",
+    "start": 8.0,
+    "end": 15.0,
+    "title": "Spoon Celt",
+    "author": "Christian Ucke",
+    "license": "CC BY-SA 4.0",
+    "source": "https://commons.wikimedia.org/wiki/File:Spoon_Celt.webm"
+  },
+  "tiger": {
+    "file": "assets/videos/tiger.webm",
+    "start": 1.0,
+    "end": 8.0,
+    "title": "2023-02-17 ZOO LJUBLJANA Panthera tigris altaica SIBIRSKI TIGER",
+    "author": "NaIzletuSi ™",
+    "license": "CC BY 3.0",
+    "source": "https://commons.wikimedia.org/wiki/File:2023-02-17_ZOO_LJUBLJANA_Panthera_tigris_altaica_SIBIRSKI_TIGER.webm"
+  },
+  "zebra": {
+    "file": "assets/videos/zebra.webm",
+    "start": 1.0,
+    "end": 8.0,
+    "title": "Tame Zebra",
+    "author": "Bernard303",
+    "license": "CC BY-SA 4.0",
+    "source": "https://commons.wikimedia.org/wiki/File:Tame_Zebra.webm"
+  },
+  "hippo": {
+    "file": "assets/videos/hippo.webm",
+    "start": 0.0,
+    "end": 6.5,
+    "title": "003 Baby Hippopotamus in the rain at Queen Elizabeth National Park Video by Giles Laurent",
+    "author": "Giles Laurent",
+    "license": "CC BY-SA 4.0",
+    "source": "https://commons.wikimedia.org/wiki/File:003_Baby_Hippopotamus_in_the_rain_at_Queen_Elizabeth_National_Park_Video_by_Giles_Laurent.webm"
+  },
+  "camel": {
+    "file": "assets/videos/camel.webm",
+    "start": 0.0,
+    "end": 6.0,
+    "title": "Camelus dromedarius in Skopje Zoo 2015",
+    "author": "Спасимир",
+    "license": "CC BY-SA 3.0",
+    "source": "https://commons.wikimedia.org/wiki/File:Camelus_dromedarius_in_Skopje_Zoo_2015.webmhd.webm"
+  },
+  "kangaroo": {
+    "file": "assets/videos/kangaroo.webm",
+    "start": 0.0,
+    "end": 7.0,
+    "title": "Kangaroo - Queensland - 2026 7",
+    "author": "Nesnad",
+    "license": "CC BY 4.0",
+    "source": "https://commons.wikimedia.org/wiki/File:Kangaroo_-_Queensland_-_2026_7.webm"
+  },
+  "goat": {
+    "file": "assets/videos/goat.webm",
+    "start": 0.0,
+    "end": 7.0,
+    "title": "Baby goats in Ireland",
+    "author": "Loz Pycock",
+    "license": "CC BY-SA 2.0",
+    "source": "https://commons.wikimedia.org/wiki/File:Baby_goats_in_Ireland.webm"
+  },
+  "donkey": {
+    "file": "assets/videos/donkey.webm",
+    "start": 1.0,
+    "end": 8.0,
+    "title": "Saerbeck - Wildfreigehege Nöttler Berg - Donkey 01 ies",
+    "author": "Frank Vincentz",
+    "license": "CC BY-SA 3.0",
+    "source": "https://commons.wikimedia.org/wiki/File:Saerbeck_-_Wildfreigehege_N%C3%B6ttler_Berg_-_Donkey_01_ies.webm"
+  },
+  "goose": {
+    "file": "assets/videos/goose.webm",
+    "start": 0.0,
+    "end": 7.5,
+    "title": "Canada goose family",
+    "author": "Packer1028",
+    "license": "CC0",
+    "source": "https://commons.wikimedia.org/wiki/File:Canada_goose_family.webm"
+  },
+  "tomato": {
+    "file": "assets/videos/tomato.webm",
+    "start": 58.0,
+    "end": 65.0,
+    "title": "ခရမ်းချဥ်သီး (tomatoes)",
+    "author": "စာကလေး",
+    "license": "CC0",
+    "source": "https://commons.wikimedia.org/wiki/File:%E1%80%81%E1%80%9B%E1%80%99%E1%80%BA%E1%80%B8%E1%80%81%E1%80%BB%E1%80%A5%E1%80%BA%E1%80%9E%E1%80%AE%E1%80%B8.webm"
+  },
+  "tractor": {
+    "file": "assets/videos/tractor.webm",
+    "start": 1.0,
+    "end": 8.0,
+    "title": "Tractor 1080p25",
+    "author": "Taurus Media Technik",
+    "license": "CC0",
+    "source": "https://commons.wikimedia.org/wiki/File:Tractor_1080p25.webm"
+  },
+  "firetruck": {
+    "file": "assets/videos/firetruck.webm",
+    "start": 0.0,
+    "end": 6.5,
+    "title": "Memphis Fire Dept Engine No. 45",
+    "author": "Thomas R Machnitzki",
+    "license": "CC BY 3.0",
+    "source": "https://commons.wikimedia.org/wiki/File:Memphis_Fire_Dept_Engine_No._45.theora.ogv"
+  },
+  "rocket": {
+    "file": "assets/videos/rocket.webm",
+    "start": 19.2,
+    "end": 26.0,
+    "title": "SpaceX Falcon 9 launch with COTS Demo Flight 1 (high quality)",
+    "author": "NASA (NASAKennedy)",
+    "license": "Public domain",
+    "source": "https://commons.wikimedia.org/wiki/File:SpaceX_Falcon_9_launch_with_COTS_Demo_Flight_1_(high_quality).ogv"
+  },
+  "sun": {
+    "file": "assets/videos/sun.webm",
+    "start": 1.0,
+    "end": 8.0,
+    "title": "Sunset time-lapse: the sun sinks below the horizon",
+    "author": "Thomas Bresson",
+    "license": "CC BY 3.0",
+    "source": "https://commons.wikimedia.org/wiki/File:2011-08-28_20-25-29-timelapse-sunset-salbert.ogv"
+  },
+  "moon": {
+    "file": "assets/videos/moon.webm",
+    "start": 3.0,
+    "end": 10.0,
+    "title": "Full moon with clouds drifting past at night",
+    "author": "Johann Mynhardt",
+    "license": "CC BY 3.0",
+    "source": "https://commons.wikimedia.org/wiki/File:Clouds_over_full_moon_at_night_(Free_HD_stock_video).webm"
+  },
+  "star": {
+    "file": "assets/videos/star.webm",
+    "start": 0.0,
+    "end": 6.5,
+    "title": "Starry night sky and Milky Way over palm trees (time-lapse)",
+    "author": "Joshua Tree National Park",
+    "license": "Public domain",
+    "source": "https://commons.wikimedia.org/wiki/File:The_Milky_Way_over_the_Oasis_of_Mara_(29954101654).webm"
+  },
+  "cloud": {
+    "file": "assets/videos/cloud.webm",
+    "start": 2.0,
+    "end": 9.0,
+    "title": "White clouds drifting across a blue sky (time-lapse)",
+    "author": "FreeSwissVideo (YouTube)",
+    "license": "CC BY 3.0",
+    "source": "https://commons.wikimedia.org/wiki/File:Wolken_Zeitraffer_-_Clouds_Timelapse_(Royalty_Free)_(Kostenlos)_3840x2160p_30FPS.webm"
+  },
+  "flower": {
+    "file": "assets/videos/flower.webm",
+    "start": 17.0,
+    "end": 24.0,
+    "title": "Pink peony flower opening (time-lapse)",
+    "author": "Zuzka Slaninková",
+    "license": "CC BY 3.0",
+    "source": "https://commons.wikimedia.org/wiki/File:Time_lapse_of_Peony_flower_blooming.webm"
+  },
+  "tree": {
+    "file": "assets/videos/tree.webm",
+    "start": 0.0,
+    "end": 7.0,
+    "title": "Autumn tree leaves swaying in the wind",
+    "author": "Oakley413",
+    "license": "CC BY-SA 4.0",
+    "source": "https://commons.wikimedia.org/wiki/File:Wind_in_trees_AppletonFarms_Massachusetts_2024-10.webm"
+  },
+  "raccoon": {
+    "file": "assets/videos/raccoon.webm",
+    "start": 2.0,
+    "end": 9.0,
+    "title": "Raccoon sniffing around on a rock",
+    "author": "Uusijani",
+    "license": "CC0",
+    "source": "https://commons.wikimedia.org/wiki/File:Raccoon_(Procyon_lotor)_investigating_a_crevice.webm"
+  },
+  "beaver": {
+    "file": "assets/videos/beaver.webm",
+    "start": 26.0,
+    "end": 33.0,
+    "title": "Beaver in the water nibbling on a twig (close-up)",
+    "author": "Rhododendrites",
+    "license": "CC BY-SA 4.0",
+    "source": "https://commons.wikimedia.org/wiki/File:Beaver_in_High_Park.webm"
+  },
+  "seal": {
+    "file": "assets/videos/seal.webm",
+    "start": 1.0,
+    "end": 8.0,
+    "title": "Harbor seal resting on a sandbank",
+    "author": "Alexis Lours",
+    "license": "CC BY 4.0",
+    "source": "https://commons.wikimedia.org/wiki/File:Harbor_seal_2024_10_19_01.webm"
+  },
+  "polarbear": {
+    "file": "assets/videos/polarbear.webm",
+    "start": 1.0,
+    "end": 8.0,
+    "title": "Polar bear resting on rocks in the sun",
+    "author": "Amada44",
+    "license": "CC BY-SA 4.0",
+    "source": "https://commons.wikimedia.org/wiki/File:Ursus_maritimus_-_Polar_bear_in_Tiergarten_Schönbrunn.webm"
+  },
+  "koala": {
+    "file": "assets/videos/koala.webm",
+    "start": 2.0,
+    "end": 9.0,
+    "title": "Koala sitting in a eucalyptus tree, scratching",
+    "author": "Paolo Leone",
+    "license": "CC BY-SA 4.0",
+    "source": "https://commons.wikimedia.org/wiki/File:See_a_Koala_scratch,_yawn_and_sleep.webm"
+  },
+  "cake": {
+    "file": "assets/videos/cake.webm",
+    "start": 16.0,
+    "end": 23.0,
+    "title": "Yellow cream cake decorated with rosettes and pearls on a turntable",
+    "author": "Adimora chidinma",
+    "license": "CC BY 4.0",
+    "source": "https://commons.wikimedia.org/wiki/File:Cake_making.webm"
+  },
+  "cookie": {
+    "file": "assets/videos/cookie.webm",
+    "start": 4.0,
+    "end": 11.0,
+    "title": "Chocolate chip cookies baking on a tray (time-lapse)",
+    "author": "Beachfront B-Roll",
+    "license": "CC BY 3.0",
+    "source": "https://commons.wikimedia.org/wiki/File:Cookies_baking.webm"
+  },
+  "drum": {
+    "file": "assets/videos/drum.webm",
+    "start": 3.0,
+    "end": 10.0,
+    "title": "Man playing tabla hand drums",
+    "author": "tabladrumsonline",
+    "license": "CC BY 3.0",
+    "source": "https://commons.wikimedia.org/wiki/File:Tabla_drums_demo.webm"
+  },
+  "scooter": {
+    "file": "assets/videos/scooter.webm",
+    "start": 1.0,
+    "end": 8.0,
+    "title": "Children with kick scooters; a girl rides past on a quiet street",
+    "author": "Simone Goldsmith, Nobuhiro Awata, Ruchika Muchala, Marco Lüthy, Asel Orumbayeva, Lindee Hoshikawa (Global Lives Project)",
+    "license": "CC BY-SA 3.0",
+    "source": "https://commons.wikimedia.org/wiki/File:Ridescooter.theora.ogv"
+  },
+  "ambulance": {
+    "file": "assets/videos/ambulance.webm",
+    "start": 1.0,
+    "end": 8.0,
+    "title": "Ambulance driving along a city road (seen from above)",
+    "author": "Benchill",
+    "license": "CC BY-SA 3.0",
+    "source": "https://commons.wikimedia.org/wiki/File:St_John_ambulance,_Dunedin,_New_Zealand.ogv"
+  },
+  "excavator": {
+    "file": "assets/videos/excavator.webm",
+    "start": 8.0,
+    "end": 15.0,
+    "title": "Yellow excavator digging soil and loading a truck",
+    "author": "KEmel49",
+    "license": "CC BY-SA 4.0",
+    "source": "https://commons.wikimedia.org/wiki/File:Excavator_digging_land_and_loading_truck.webm"
+  },
+  "caterpillar": {
+    "file": "assets/videos/caterpillar.webm",
+    "start": 2,
+    "end": 9,
+    "title": "Green caterpillar crawling on a leaf",
+    "author": "Benzmary",
+    "license": "CC0",
+    "source": "https://commons.wikimedia.org/wiki/File:Caterpillar.webm"
+  },
+  "ant": {
+    "file": "assets/videos/ant.webm",
+    "start": 20,
+    "end": 27,
+    "title": "Ants crawling inside a yellow dandelion flower",
+    "author": "Dennis.insect.filmer",
+    "license": "CC BY-SA 4.0",
+    "source": "https://commons.wikimedia.org/wiki/File:Ants_on_dandelion.webm"
+  },
+  "dragonfly": {
+    "file": "assets/videos/dragonfly.webm",
+    "start": 2,
+    "end": 9,
+    "title": "Red dragonfly resting on a wooden rail",
+    "author": "The Nature Box",
+    "license": "CC BY-SA 3.0",
+    "source": "https://commons.wikimedia.org/wiki/File:Red_dragonfly_(Sympetrum_baccha_matutinum).webm"
+  },
+  "bed": {
+    "file": "assets/videos/bed.webm",
+    "start": 7,
+    "end": 14,
+    "title": "Empty made white bed in a bright bedroom",
+    "author": "Government of the United States Virgin Islands",
+    "license": "Public domain",
+    "source": "https://commons.wikimedia.org/wiki/File:USVI_Sequence_01_3_-_Bright_minimalist_bedroom_with_a_white_bed_colorful_rug_and_light_furniture_featuring_an_open_door_leading_to_another_room.webm"
+  },
+  "bath": {
+    "file": "assets/videos/bath.webm",
+    "start": 26,
+    "end": 33,
+    "title": "Pink cloud bath bomb fizzing rainbow bubbles in bath water",
+    "author": "Old Mom, New Tricks",
+    "license": "CC BY 3.0",
+    "source": "https://commons.wikimedia.org/wiki/File:Pink_cloud_rainbow_bath_bomb.webm"
+  },
+  "guitar": {
+    "file": "assets/videos/guitar.webm",
+    "start": 3,
+    "end": 10,
+    "title": "Hands fingerpicking an acoustic guitar",
+    "author": "Elenaf",
+    "license": "CC BY-SA 3.0",
+    "source": "https://commons.wikimedia.org/wiki/File:Fingerpicking_pattern_1_pimami_chitarra.webm"
+  },
+  "piano": {
+    "file": "assets/videos/piano.webm",
+    "start": 5,
+    "end": 12,
+    "title": "Hands playing a grand piano (four hands)",
+    "author": "PianoMelodyNotes Gabry",
+    "license": "CC BY 3.0",
+    "source": "https://commons.wikimedia.org/wiki/File:Piano-Diabelli_4_mani_op.149_N.26_Allegro.webm"
+  },
+  "bell": {
+    "file": "assets/videos/bell.webm",
+    "start": 5,
+    "end": 12,
+    "title": "Three church bells in a stone bell gable",
+    "author": "Musicaline",
+    "license": "CC BY-SA 4.0",
+    "source": "https://commons.wikimedia.org/wiki/File:Il_est_midi.webm"
+  },
+  "orange": {
+    "file": "assets/videos/orange.webm",
+    "start": 0,
+    "end": 4.5,
+    "title": "Halved oranges and a hand juice squeezer pressing an orange",
+    "author": "驭龙飞车手",
+    "license": "CC BY 4.0",
+    "source": "https://commons.wikimedia.org/wiki/File:Mini_orange_juice_squeezer.webm"
+  },
+  "corn": {
+    "file": "assets/videos/corn.webm",
+    "start": 26,
+    "end": 32,
+    "title": "Close-up of yellow corn cobs",
+    "author": "Dagentle",
+    "license": "CC BY-SA 4.0",
+    "source": "https://commons.wikimedia.org/wiki/File:Maize_relevance.webm"
+  },
+  "potato": {
+    "file": "assets/videos/potato.webm",
+    "start": 1,
+    "end": 8,
+    "title": "Pile of potatoes close-up",
+    "author": "Muktee1494",
+    "license": "CC BY-SA 4.0",
+    "source": "https://commons.wikimedia.org/wiki/File:Irish_potatoes_🥔_video.webm"
+  },
+  "crane": {
+    "file": "assets/videos/crane.webm",
+    "start": 3,
+    "end": 10,
+    "title": "Yellow tower crane slowly turning",
+    "author": "Benoît Prieur",
+    "license": "CC0",
+    "source": "https://commons.wikimedia.org/wiki/File:Grue_de_chantier_à_Ambérieux-en-Dombes_en_janvier_2022.webm"
+  },
+  "taxi": {
+    "file": "assets/videos/taxi.webm",
+    "start": 1,
+    "end": 8,
+    "title": "Yellow taxi waiting at a station",
+    "author": "Draceane",
+    "license": "CC BY-SA 4.0",
+    "source": "https://commons.wikimedia.org/wiki/File:Sibiu,_taxikáři_před_nádražím,_2014.webm"
+  }
+}

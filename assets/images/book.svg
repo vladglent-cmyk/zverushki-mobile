@@ -1,0 +1,21 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 400 400" class="animal-svg">
+  <g class="whole" style="transform-origin:200px 360px" stroke="#6E5A50" stroke-width="7" stroke-linejoin="round" stroke-linecap="round">
+    <path d="M40 120 C 100 100, 160 110, 200 140 C 240 110, 300 100, 360 120 V320 C 300 300, 240 310, 200 336 C 160 310, 100 300, 40 320 Z" fill="#9EC3E4"/>
+    <path d="M56 130 C 110 116, 160 124, 196 150 V320 C 160 298, 110 292, 56 304 Z" fill="#FFF6EE"/>
+    <path d="M204 150 C 240 124, 290 116, 344 130 V304 C 290 292, 240 298, 204 320 Z" fill="#FFF6EE"/>
+    <path d="M90 170 H160 M90 200 H150 M240 260 H310 M250 290 H300" fill="none" stroke-width="5" opacity=".4"/>
+    <circle cx="270" cy="196" r="34" fill="#F7DC7C" stroke-width="5"/>
+    <path d="M90 270 Q120 230 150 270 Z" fill="#9CC98A" stroke-width="5"/>
+    <g class="eyes" style="transform-origin:271px 192px" stroke="none">
+      <ellipse cx="258" cy="192" rx="6" ry="7" fill="#4A3B35"/>
+      <circle cx="261" cy="189" r="3" fill="#fff"/>
+      <ellipse cx="284" cy="192" rx="6" ry="7" fill="#4A3B35"/>
+      <circle cx="287" cy="189" r="3" fill="#fff"/>
+    </g>
+    <path d="M261 208 Q271 222 281 208" fill="none" stroke-width="5"/>
+    <g class="part leaf" style="transform-origin:200px 230px">
+      <path d="M204 150 C 240 124, 290 116, 344 130 V304 C 290 292, 240 298, 204 320 Z" fill="#FBF3E6"/>
+      <path d="M240 200 H310 M240 230 H300 M240 260 H310" fill="none" stroke-width="5" opacity=".35"/>
+    </g>
+  </g>
+</svg>

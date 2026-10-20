@@ -1,0 +1,26 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 400 400" class="animal-svg">
+  <g class="whole" style="transform-origin:210px 385px" stroke="#6E5A50" stroke-width="7" stroke-linejoin="round" stroke-linecap="round">
+    <!-- лапки -->
+    <path d="M182 350 L182 378 M170 380 L194 380 M238 350 L238 378 M226 380 L250 380" fill="none" stroke="#E0A65A" stroke-width="8"/>
+    <!-- хвост и тело -->
+    <path d="M300 250 Q340 200 352 238 Q346 262 330 270 Q352 268 344 296 Z" fill="#E9BE8A"/>
+    <ellipse cx="215" cy="292" rx="108" ry="74" fill="#F3D3A7"/>
+    <!-- крылышко -->
+    <g class="part wing" style="transform-origin:240px 268px">
+      <path d="M196 276 C 214 238, 292 240, 304 290 C 282 322, 226 324, 196 276 Z" fill="#E9BE8A"/>
+      <path d="M228 288 Q248 300 272 294" fill="none" stroke-width="4" opacity=".6"/>
+    </g>
+    <!-- голова -->
+    <g class="part head" style="transform-origin:175px 245px">
+      <path d="M128 112 Q126 84 146 90 Q150 68 170 80 Q182 64 196 86 Q206 98 192 112 Z" fill="#EDA196"/>
+      <circle cx="160" cy="172" r="70" fill="#F3D3A7"/>
+      <path d="M100 172 L68 186 L102 196 Z" fill="#F2C26B"/>
+      <path d="M104 202 Q96 226 112 232 Q124 224 118 204 Z" fill="#EDA196"/>
+      <circle cx="176" cy="194" r="15" fill="#F4B6B0" stroke="none" opacity=".65"/>
+      <g class="eyes" style="transform-origin:146px 158px" stroke="none">
+        <ellipse cx="146" cy="158" rx="12" ry="15" fill="#4A3B35"/>
+        <circle cx="150" cy="152" r="4.5" fill="#fff"/>
+      </g>
+    </g>
+  </g>
+</svg>

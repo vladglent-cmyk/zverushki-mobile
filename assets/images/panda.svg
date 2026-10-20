@@ -1,0 +1,36 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 400 400" class="animal-svg">
+  <g class="whole" style="transform-origin:200px 385px" stroke="#6E5A50" stroke-width="7" stroke-linejoin="round" stroke-linecap="round">
+    <!-- тело -->
+    <ellipse cx="200" cy="305" rx="92" ry="74" fill="#FBF8F3"/>
+    <ellipse cx="158" cy="368" rx="32" ry="20" fill="#5F575C"/>
+    <ellipse cx="242" cy="368" rx="32" ry="20" fill="#5F575C"/>
+    <ellipse cx="126" cy="300" rx="26" ry="40" fill="#5F575C" transform="rotate(20 126 300)"/>
+    <!-- голова -->
+    <g class="part head" style="transform-origin:200px 255px">
+      <circle cx="114" cy="92" r="34" fill="#5F575C"/>
+      <circle cx="286" cy="92" r="34" fill="#5F575C"/>
+      <ellipse cx="200" cy="170" rx="108" ry="94" fill="#FBF8F3"/>
+      <ellipse cx="158" cy="168" rx="27" ry="35" fill="#5F575C" stroke="none" transform="rotate(25 158 168)"/>
+      <ellipse cx="242" cy="168" rx="27" ry="35" fill="#5F575C" stroke="none" transform="rotate(-25 242 168)"/>
+      <circle cx="136" cy="212" r="15" fill="#F4B6B0" stroke="none" opacity=".6"/>
+      <circle cx="264" cy="212" r="15" fill="#F4B6B0" stroke="none" opacity=".6"/>
+      <g class="eyes" style="transform-origin:200px 165px" stroke="none">
+        <circle cx="161" cy="165" r="12" fill="#fff"/>
+        <circle cx="239" cy="165" r="12" fill="#fff"/>
+        <circle cx="162" cy="167" r="7" fill="#3E3639"/>
+        <circle cx="238" cy="167" r="7" fill="#3E3639"/>
+        <circle cx="164" cy="164" r="2.5" fill="#fff"/>
+        <circle cx="240" cy="164" r="2.5" fill="#fff"/>
+      </g>
+      <ellipse cx="200" cy="204" rx="14" ry="9" fill="#5F575C" stroke="none"/>
+      <path d="M200 212 Q200 225 189 227 M200 212 Q200 225 211 227" fill="none" stroke-width="4.5"/>
+    </g>
+    <!-- бамбук -->
+    <g class="part bamboo" style="transform-origin:276px 300px">
+      <rect x="266" y="210" width="20" height="150" rx="10" fill="#A9CC98"/>
+      <path d="M268 255 H284 M268 305 H284" fill="none" stroke-width="5"/>
+      <path d="M284 232 Q312 212 322 226 Q306 244 284 238 Z" fill="#BFDDAE" stroke-width="5"/>
+    </g>
+    <ellipse cx="270" cy="300" rx="26" ry="40" fill="#5F575C" transform="rotate(-20 270 300)"/>
+  </g>
+</svg>

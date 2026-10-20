@@ -1,0 +1,12 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 400 400" class="animal-svg">
+  <g class="whole" style="transform-origin:200px 220px" stroke="#6E5A50" stroke-width="7" stroke-linejoin="round" stroke-linecap="round">
+    <path d="M220 60 C 140 70, 90 150, 110 230 C 130 310, 220 350, 300 320 C 230 320, 170 270, 166 200 C 162 130, 196 80, 220 60 Z" fill="#F7E6A0"/>
+    <g class="part twinkle" style="transform-origin:315px 170px" fill="#F7DC7C" stroke-width="5"><path d="M300 110 l8 18 l20 2 l-15 13 l5 20 l-18 -11 l-18 11 l5 -20 l-15 -13 l20 -2 Z"/><path d="M330 220 l5 11 l12 1 l-9 8 l3 12 l-11 -7 l-11 7 l3 -12 l-9 -8 l12 -1 Z"/></g>
+    <circle cx="170" cy="262" r="13" fill="#F4B6B0" stroke="none" opacity=".65"/>
+    <g class="eyes" style="transform-origin:156px 224px" stroke="none">
+      <ellipse cx="156" cy="224" rx="8" ry="10" fill="#4A3B35"/>
+      <circle cx="159" cy="220" r="3" fill="#fff"/>
+    </g>
+    <path d="M150 268 Q166 280 182 270" fill="none" stroke-width="5"/>
+  </g>
+</svg>

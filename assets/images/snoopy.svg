@@ -1,0 +1,31 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 400 400" class="animal-svg">
+  <g class="whole" style="transform-origin:200px 385px" stroke="#3E3A3B" stroke-width="7" stroke-linejoin="round" stroke-linecap="round">
+    <!-- хвостик -->
+    <g class="part tail" style="transform-origin:262px 322px">
+      <path d="M260 330 Q292 318 300 290 Q304 280 296 278 Q286 300 258 310 Z" fill="#FFFEFB"/>
+    </g>
+    <!-- тело -->
+    <path d="M150 380 C 122 326, 134 238, 196 222 C 258 238, 272 326, 246 380 Z" fill="#FFFEFB"/>
+    <ellipse cx="166" cy="380" rx="34" ry="14" fill="#FFFEFB"/>
+    <ellipse cx="236" cy="380" rx="34" ry="14" fill="#FFFEFB"/>
+    <path d="M154 300 Q140 326 160 340 M240 300 Q258 322 244 340" fill="none" stroke-width="6"/>
+    <!-- ошейник -->
+    <path d="M156 246 Q198 264 240 246" fill="none" stroke="#E46F6A" stroke-width="12"/>
+    <!-- голова в профиль: круглая макушка и длинная мордочка вправо -->
+    <g class="part head" style="transform-origin:196px 250px">
+      <path d="M118 150 C 118 92, 176 66, 222 84 C 258 98, 300 112, 330 132 C 356 150, 352 196, 318 206 C 280 216, 240 214, 214 232 C 176 258, 120 220, 118 150 Z" fill="#FFFEFB"/>
+      <ellipse cx="334" cy="140" rx="24" ry="20" fill="#2F2B2C"/>
+      <ellipse cx="328" cy="133" rx="7" ry="4" fill="#fff" stroke="none" opacity=".7"/>
+      <path d="M262 186 Q292 196 318 186" fill="none" stroke-width="5"/>
+      <circle cx="262" cy="170" r="13" fill="#F4B6B0" stroke="none" opacity=".6"/>
+      <g class="eyes" style="transform-origin:226px 128px" stroke="none">
+        <ellipse cx="226" cy="128" rx="8" ry="14" fill="#2F2B2C"/>
+        <circle cx="228" cy="122" r="3" fill="#fff"/>
+      </g>
+      <!-- длинное чёрное ухо -->
+      <g class="part ear" style="transform-origin:160px 106px">
+        <path d="M150 96 C 120 112, 108 168, 120 214 C 128 238, 158 236, 164 212 C 172 176, 176 130, 168 104 Z" fill="#3E3A3B"/>
+      </g>
+    </g>
+  </g>
+</svg>

@@ -1,0 +1,25 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 400 400" class="animal-svg">
+  <g class="whole" style="transform-origin:200px 360px" stroke="#6E5A50" stroke-width="7" stroke-linejoin="round" stroke-linecap="round">
+    <!-- долька арбуза -->
+    <path d="M40 150 C 40 270, 120 350, 200 350 C 280 350, 360 270, 360 150 Z" fill="#8FC27A"/>
+    <path d="M62 150 C 66 252, 132 326, 200 326 C 268 326, 334 252, 338 150 Z" fill="#F4F7E6" stroke="none"/>
+    <path d="M78 150 C 84 240, 140 308, 200 308 C 260 308, 316 240, 322 150 Z" fill="#F29393"/>
+    <path d="M40 150 H360" fill="none"/>
+    <g fill="#4A3B35" stroke="none">
+      <ellipse cx="120" cy="196" rx="6" ry="10" transform="rotate(-20 120 196)"/>
+      <ellipse cx="280" cy="196" rx="6" ry="10" transform="rotate(20 280 196)"/>
+      <ellipse cx="150" cy="262" rx="6" ry="10" transform="rotate(-25 150 262)"/>
+      <ellipse cx="250" cy="262" rx="6" ry="10" transform="rotate(25 250 262)"/>
+      <ellipse cx="200" cy="282" rx="6" ry="10"/>
+    </g>
+    <circle cx="150" cy="214" r="13" fill="#F7B9B9" stroke="none"/>
+    <circle cx="250" cy="214" r="13" fill="#F7B9B9" stroke="none"/>
+    <g class="eyes" style="transform-origin:200px 196px" stroke="none">
+      <ellipse cx="170" cy="196" rx="10" ry="13" fill="#4A3B35"/>
+      <ellipse cx="230" cy="196" rx="10" ry="13" fill="#4A3B35"/>
+      <circle cx="173" cy="190" r="4" fill="#fff"/>
+      <circle cx="233" cy="190" r="4" fill="#fff"/>
+    </g>
+    <path d="M184 228 Q200 242 216 228" fill="none" stroke-width="5"/>
+  </g>
+</svg>

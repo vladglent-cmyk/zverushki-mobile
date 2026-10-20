@@ -1,0 +1,36 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 400 400" class="animal-svg">
+  <g class="whole" style="transform-origin:200px 385px" stroke="#6E5A50" stroke-width="7" stroke-linejoin="round" stroke-linecap="round">
+    <!-- кофта -->
+    <path d="M96 390 C 96 300, 140 262, 200 262 C 260 262, 304 300, 304 390 Z" fill="#CDB9E2"/>
+    <path d="M200 268 V388" fill="none" stroke-width="5"/>
+    <circle cx="200" cy="300" r="6" fill="#F3E9FA" stroke-width="4"/>
+    <circle cx="200" cy="334" r="6" fill="#F3E9FA" stroke-width="4"/>
+    <circle cx="200" cy="368" r="6" fill="#F3E9FA" stroke-width="4"/>
+    <!-- рука машет -->
+    <g class="part arm" style="transform-origin:278px 300px">
+      <path d="M272 300 C 300 280, 316 250, 318 222" fill="none" stroke="#6E5A50" stroke-width="34"/>
+      <path d="M272 300 C 300 280, 316 250, 318 222" fill="none" stroke="#CDB9E2" stroke-width="20"/>
+      <circle cx="320" cy="206" r="20" fill="#F6D5BE"/>
+    </g>
+    <!-- голова -->
+    <g class="part head" style="transform-origin:200px 250px">
+      <circle cx="200" cy="74" r="30" fill="#DCD7D2"/>
+      <path d="M112 168 C 104 96, 160 70, 200 72 C 240 70, 296 96, 288 168 C 270 150, 250 120, 200 116 C 150 120, 130 150, 112 168 Z" fill="#DCD7D2"/>
+      <ellipse cx="200" cy="168" rx="80" ry="86" fill="#F6D5BE"/>
+      <path d="M126 140 C 140 108, 170 100, 200 104 C 230 100, 260 108, 274 140 C 250 126, 226 122, 200 124 C 174 122, 150 126, 126 140 Z" fill="#DCD7D2"/>
+      <circle cx="148" cy="202" r="15" fill="#F4B6B0" stroke="none" opacity=".7"/>
+      <circle cx="252" cy="202" r="15" fill="#F4B6B0" stroke="none" opacity=".7"/>
+      <g class="eyes" style="transform-origin:200px 170px" stroke="none">
+        <ellipse cx="170" cy="172" rx="9" ry="12" fill="#4A3B35"/>
+        <ellipse cx="230" cy="172" rx="9" ry="12" fill="#4A3B35"/>
+        <circle cx="173" cy="167" r="3.5" fill="#fff"/>
+        <circle cx="233" cy="167" r="3.5" fill="#fff"/>
+      </g>
+      <!-- очки -->
+      <circle cx="170" cy="172" r="24" fill="none" stroke-width="5"/>
+      <circle cx="230" cy="172" r="24" fill="none" stroke-width="5"/>
+      <path d="M194 170 Q200 164 206 170" fill="none" stroke-width="5"/>
+      <path d="M182 214 Q200 230 218 214" fill="none" stroke-width="5"/>
+    </g>
+  </g>
+</svg>

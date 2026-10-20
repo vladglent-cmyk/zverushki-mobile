@@ -1,0 +1,29 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 400 400" class="animal-svg">
+  <g class="whole" style="transform-origin:200px 385px" stroke="#6E5A50" stroke-width="7" stroke-linejoin="round" stroke-linecap="round">
+    <!-- тело -->
+    <ellipse cx="200" cy="318" rx="98" ry="64" fill="#DDB591"/>
+    <ellipse cx="158" cy="372" rx="26" ry="15" fill="#8F6A55"/>
+    <ellipse cx="242" cy="372" rx="26" ry="15" fill="#8F6A55"/>
+    <!-- голова с гривой -->
+    <g class="part head" style="transform-origin:200px 280px">
+      <path d="M150 70 L140 26 Q152 22 172 58 Z" fill="#DDB591"/>
+      <path d="M250 70 L260 26 Q248 22 228 58 Z" fill="#DDB591"/>
+      <path d="M148 64 Q150 90 140 120 Q132 160 142 220 Q118 180 116 130 Q118 84 148 64 Z" fill="#8F6A55"/>
+      <path d="M252 64 Q250 90 260 120 Q268 160 258 220 Q282 180 284 130 Q282 84 252 64 Z" fill="#8F6A55"/>
+      <path d="M200 52 C 262 52, 268 120, 262 170 C 258 210, 250 236, 200 240 C 150 236, 142 210, 138 170 C 132 120, 138 52, 200 52 Z" fill="#DDB591"/>
+      <path d="M170 56 Q186 40 200 58 Q214 40 230 56 Q222 86 200 90 Q178 86 170 56 Z" fill="#8F6A55"/>
+      <ellipse cx="200" cy="214" rx="62" ry="42" fill="#EED3B6"/>
+      <ellipse cx="180" cy="214" rx="7" ry="10" fill="#A78A78" stroke="none"/>
+      <ellipse cx="220" cy="214" rx="7" ry="10" fill="#A78A78" stroke="none"/>
+      <path d="M186 236 Q200 244 214 236" fill="none" stroke-width="4.5"/>
+      <circle cx="150" cy="180" r="13" fill="#F4B6B0" stroke="none" opacity=".6"/>
+      <circle cx="250" cy="180" r="13" fill="#F4B6B0" stroke="none" opacity=".6"/>
+      <g class="eyes" style="transform-origin:200px 140px" stroke="none">
+        <ellipse cx="166" cy="140" rx="12" ry="16" fill="#4A3B35"/>
+        <ellipse cx="234" cy="140" rx="12" ry="16" fill="#4A3B35"/>
+        <circle cx="170" cy="133" r="4.5" fill="#fff"/>
+        <circle cx="238" cy="133" r="4.5" fill="#fff"/>
+      </g>
+    </g>
+  </g>
+</svg>

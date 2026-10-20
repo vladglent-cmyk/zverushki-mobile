@@ -1,0 +1,40 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 400 400" class="animal-svg">
+  <g class="whole" style="transform-origin:200px 385px" stroke="#6E5A50" stroke-width="7" stroke-linejoin="round" stroke-linecap="round">
+    <!-- ножки -->
+    <path d="M160 340 V378 M240 340 V378" fill="none" stroke="#7D6E69" stroke-width="20"/>
+    <!-- пушистое тело: облачко -->
+    <g fill="#FBF6EC">
+      <circle cx="130" cy="290" r="48"/>
+      <circle cx="270" cy="290" r="48"/>
+      <circle cx="170" cy="250" r="50"/>
+      <circle cx="232" cy="250" r="50"/>
+      <circle cx="200" cy="320" r="56"/>
+    </g>
+    <g fill="#FBF6EC" stroke="none">
+      <ellipse cx="200" cy="290" rx="120" ry="52"/>
+      <ellipse cx="200" cy="268" rx="78" ry="56"/>
+    </g>
+    <!-- голова -->
+    <g class="part head" style="transform-origin:200px 260px">
+      <ellipse cx="116" cy="168" rx="38" ry="18" fill="#CDBDB3" transform="rotate(-24 116 168)"/>
+      <ellipse cx="284" cy="168" rx="38" ry="18" fill="#CDBDB3" transform="rotate(24 284 168)"/>
+      <ellipse cx="200" cy="176" rx="70" ry="78" fill="#CDBDB3"/>
+      <g fill="#FBF6EC">
+        <circle cx="168" cy="108" r="26"/>
+        <circle cx="200" cy="96" r="28"/>
+        <circle cx="232" cy="108" r="26"/>
+      </g>
+      <ellipse cx="200" cy="122" rx="50" ry="16" fill="#FBF6EC" stroke="none"/>
+      <circle cx="158" cy="198" r="13" fill="#F4B6B0" stroke="none" opacity=".7"/>
+      <circle cx="242" cy="198" r="13" fill="#F4B6B0" stroke="none" opacity=".7"/>
+      <g class="eyes" style="transform-origin:200px 168px" stroke="none">
+        <ellipse cx="174" cy="168" rx="11" ry="15" fill="#4A3B35"/>
+        <ellipse cx="226" cy="168" rx="11" ry="15" fill="#4A3B35"/>
+        <circle cx="178" cy="162" r="4" fill="#fff"/>
+        <circle cx="230" cy="162" r="4" fill="#fff"/>
+      </g>
+      <path d="M190 206 L210 206 L200 215 Z" fill="#9C8478" stroke="#9C8478" stroke-width="4"/>
+      <path d="M200 215 Q200 226 190 228 M200 215 Q200 226 210 228" fill="none" stroke-width="4.5"/>
+    </g>
+  </g>
+</svg>

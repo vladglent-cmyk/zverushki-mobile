@@ -1,0 +1,33 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 400 400" class="animal-svg">
+  <g class="whole" style="transform-origin:200px 385px" stroke="#6E5A50" stroke-width="7" stroke-linejoin="round" stroke-linecap="round">
+    <!-- хвост -->
+    <g class="part tail" style="transform-origin:272px 330px">
+      <path d="M268 342 C 352 338, 372 282, 346 238 C 338 222, 316 226, 321 244 C 336 284, 318 312, 268 312 Z" fill="#F2C9A0"/>
+    </g>
+    <!-- тело -->
+    <ellipse cx="200" cy="300" rx="95" ry="78" fill="#F2C9A0"/>
+    <ellipse cx="200" cy="318" rx="52" ry="46" fill="#FBE6D0" stroke="none"/>
+    <ellipse cx="163" cy="372" rx="28" ry="16" fill="#F2C9A0"/>
+    <ellipse cx="237" cy="372" rx="28" ry="16" fill="#F2C9A0"/>
+    <!-- голова -->
+    <g class="part head" style="transform-origin:200px 250px">
+      <path d="M118 135 L110 52 Q113 38 126 45 L186 96 Z" fill="#F2C9A0"/>
+      <path d="M282 135 L290 52 Q287 38 274 45 L214 96 Z" fill="#F2C9A0"/>
+      <path d="M130 112 L126 70 L166 100 Z" fill="#F4B6B0" stroke="none"/>
+      <path d="M270 112 L274 70 L234 100 Z" fill="#F4B6B0" stroke="none"/>
+      <ellipse cx="200" cy="168" rx="106" ry="92" fill="#F2C9A0"/>
+      <path d="M188 84 Q192 96 189 108 M212 84 Q208 96 211 108" fill="none" stroke="#DDA878" stroke-width="6"/>
+      <circle cx="138" cy="200" r="17" fill="#F4B6B0" stroke="none" opacity=".65"/>
+      <circle cx="262" cy="200" r="17" fill="#F4B6B0" stroke="none" opacity=".65"/>
+      <g class="eyes" style="transform-origin:200px 162px" stroke="none">
+        <ellipse cx="160" cy="162" rx="13" ry="17" fill="#4A3B35"/>
+        <ellipse cx="240" cy="162" rx="13" ry="17" fill="#4A3B35"/>
+        <circle cx="164" cy="155" r="5" fill="#fff"/>
+        <circle cx="244" cy="155" r="5" fill="#fff"/>
+      </g>
+      <path d="M191 189 L209 189 L200 198 Z" fill="#E89A94" stroke="#E89A94" stroke-width="5"/>
+      <path d="M200 198 Q200 211 187 211 M200 198 Q200 211 213 211" fill="none" stroke-width="4.5"/>
+      <path d="M122 190 L82 183 M122 202 L84 206 M278 190 L318 183 M278 202 L316 206" fill="none" stroke-width="3.5" opacity=".55"/>
+    </g>
+  </g>
+</svg>

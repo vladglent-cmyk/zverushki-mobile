@@ -1,0 +1,240 @@
+<!doctype html>
+<html lang="ru">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover, user-scalable=no">
+  <meta name="apple-mobile-web-app-capable" content="yes">
+  <meta name="mobile-web-app-capable" content="yes">
+  <meta name="apple-mobile-web-app-status-bar-style" content="default">
+  <meta name="apple-mobile-web-app-title" content="Зверушки">
+  <meta name="theme-color" content="#FBF6EE">
+  <link rel="manifest" href="manifest.webmanifest">
+  <link rel="apple-touch-icon" href="assets/icons/apple-touch-icon.png">
+  <title>Зверушки</title>
+  <link rel="icon" href="assets/images/cat.svg">
+  <link rel="stylesheet" href="css/style.css">
+  <link rel="stylesheet" href="css/mobile.css">
+</head>
+<body>
+  <main id="app">
+    <section id="grid" class="screen visible" aria-label="Зверушки"></section>
+
+    <!-- Ку-ку: зверь прячется за кустиком -->
+    <section id="peek" class="screen">
+      <button id="peek-back" class="back" aria-label="Назад">
+        <svg viewBox="0 0 48 48" aria-hidden="true">
+          <path d="M28 12 L16 24 L28 36" fill="none" stroke="currentColor" stroke-width="5" stroke-linecap="round" stroke-linejoin="round"/>
+        </svg>
+      </button>
+      <div class="peek-box">
+        <div id="peek-animal" class="peek-animal"></div>
+        <svg class="bush" viewBox="0 0 400 220" aria-hidden="true">
+          <g stroke="#6E5A50" stroke-width="7" stroke-linejoin="round" fill="#A9CC98">
+            <circle cx="70" cy="140" r="66"/>
+            <circle cx="160" cy="104" r="78"/>
+            <circle cx="250" cy="108" r="76"/>
+            <circle cx="332" cy="142" r="64"/>
+          </g>
+          <rect x="4" y="140" width="392" height="80" fill="#A9CC98"/>
+          <g fill="#BFDDAE">
+            <circle cx="140" cy="92" r="20"/>
+            <circle cx="236" cy="98" r="16"/>
+            <circle cx="66" cy="132" r="12"/>
+            <circle cx="320" cy="134" r="14"/>
+          </g>
+        </svg>
+      </div>
+    </section>
+
+    <section id="stage" class="screen">
+      <button id="back" class="back" aria-label="Назад">
+        <svg viewBox="0 0 48 48" aria-hidden="true">
+          <path d="M28 12 L16 24 L28 36" fill="none" stroke="currentColor" stroke-width="5" stroke-linecap="round" stroke-linejoin="round"/>
+        </svg>
+      </button>
+      <div class="stage-card">
+        <div id="stage-tile" class="tile"></div>
+        <!-- Видеокружок: настоящий зверь, без звука -->
+        <div id="kruzhok" class="kruzhok" hidden>
+          <video muted playsinline preload="auto"></video>
+        </div>
+      </div>
+    </section>
+  </main>
+
+  <!-- Две кнопки: взрослый микрофон (нажать — вкл/выкл) и малыш (держать, пока малыш говорит) -->
+  <div class="voice-controls">
+    <div class="voice-item">
+      <button id="btn-quiz" class="mic mode-btn" data-mode="quiz" type="button" aria-label="Игра «Где котик?»">
+        <svg viewBox="0 0 48 48" aria-hidden="true" fill="none" stroke="currentColor" stroke-width="3.5" stroke-linecap="round" stroke-linejoin="round">
+          <circle cx="21" cy="21" r="11"/>
+          <path d="M29 29 L38 38"/>
+        </svg>
+      </button>
+      <span class="voice-caption">Где?</span>
+    </div>
+    <div class="voice-item">
+      <button id="btn-peek" class="mic mode-btn" data-mode="peek" type="button" aria-label="Ку-ку: прятки">
+        <svg viewBox="0 0 48 48" aria-hidden="true" fill="none" stroke="currentColor" stroke-width="3.5" stroke-linecap="round" stroke-linejoin="round">
+          <path d="M10 26 a14 14 0 0 1 28 0"/>
+          <circle cx="19" cy="22" r="1.8" fill="currentColor" stroke="none"/>
+          <circle cx="29" cy="22" r="1.8" fill="currentColor" stroke="none"/>
+          <path d="M6 34 Q12 26 18 32 Q24 26 30 32 Q36 26 42 34 Z" fill="currentColor" stroke="none" opacity=".35"/>
+          <path d="M6 34 Q12 26 18 32 Q24 26 30 32 Q36 26 42 34"/>
+        </svg>
+      </button>
+      <span class="voice-caption">Ку-ку</span>
+    </div>
+    <div class="voice-item">
+      <button id="btn-sleep" class="mic mode-btn" data-mode="sleep" type="button" aria-label="Зверушки спать">
+        <svg viewBox="0 0 48 48" aria-hidden="true" fill="none" stroke="currentColor" stroke-width="3.5" stroke-linecap="round" stroke-linejoin="round">
+          <path d="M30 8 A16 16 0 1 0 40 30 A12 12 0 1 1 30 8 Z"/>
+        </svg>
+      </button>
+      <span class="voice-caption">Спать</span>
+    </div>
+    <span class="voice-divider" aria-hidden="true"></span>
+    <div class="voice-item adult-item">
+      <button id="mic" class="mic" type="button" aria-label="Микрофон взрослого" aria-pressed="false">
+        <svg viewBox="0 0 48 48" aria-hidden="true" fill="none" stroke="currentColor" stroke-width="3.5" stroke-linecap="round" stroke-linejoin="round">
+          <rect x="17" y="7" width="14" height="22" rx="7"/>
+          <path d="M11 23 a13 13 0 0 0 26 0 M24 36 V41 M18 41 H30"/>
+        </svg>
+      </button>
+      <span class="voice-caption" id="mic-caption">Взрослый</span>
+    </div>
+    <div class="voice-item">
+      <button id="kid" class="mic kid" type="button" aria-label="Малыш: держите, пока малыш говорит">
+        <svg viewBox="0 0 48 48" aria-hidden="true" fill="none" stroke="currentColor" stroke-width="3.5" stroke-linecap="round" stroke-linejoin="round">
+          <circle cx="24" cy="26" r="15"/>
+          <path d="M22 11 Q24 5 29 8"/>
+          <circle cx="18.5" cy="25" r="1.6" fill="currentColor" stroke="none"/>
+          <circle cx="29.5" cy="25" r="1.6" fill="currentColor" stroke="none"/>
+          <path d="M19 31 Q24 35 29 31"/>
+        </svg>
+      </button>
+      <span class="voice-caption" id="kid-caption">Малыш</span>
+    </div>
+  </div>
+
+  <!-- «Где котик?»: вопрос сверху (нажать — повторить) -->
+  <div id="quiz" class="quiz" hidden><span id="quiz-text"></span></div>
+
+  <!-- Зверушки спят -->
+  <div id="night" class="night" hidden>
+    <div class="night-text">
+      <div class="night-moon" aria-hidden="true">
+        <svg viewBox="0 0 48 48"><path d="M30 8 A16 16 0 1 0 40 30 A12 12 0 1 1 30 8 Z" fill="#F3E3B0" stroke="#6E5A50" stroke-width="2.5" stroke-linejoin="round"/></svg>
+      </div>
+      <div class="night-title">Зверушки спят</div>
+      <div class="night-sub">Спокойной ночи! Игра закончилась — можно выключать компьютер.</div>
+    </div>
+    <button id="night-wake" type="button" class="night-wake">Разбудить</button>
+  </div>
+
+  <!-- Подсказка для взрослого: что сейчас с голосом малыша -->
+  <div id="kid-bubble" class="kid-bubble" hidden>
+    <p id="kid-text"></p>
+    <div class="progress" id="kid-progress" hidden><div></div></div>
+    <div id="kid-actions" class="kid-actions"></div>
+  </div>
+
+  <!-- Что услышал микрофон: мелко, для взрослого, включается в настройках -->
+  <div id="heard" class="heard" hidden></div>
+
+  <!-- Вход для взрослого: удерживать 3 секунды -->
+  <div id="gear" class="gear" aria-label="Настройки (удерживать 3 секунды)">
+    <svg viewBox="0 0 64 64" aria-hidden="true">
+      <circle class="ring" cx="32" cy="32" r="28"/>
+      <circle class="cog-teeth" cx="32" cy="32" r="13"/>
+      <circle class="cog-hub" cx="32" cy="32" r="7"/>
+    </svg>
+  </div>
+
+  <div id="settings" class="settings" hidden>
+    <div class="settings-box" role="dialog" aria-label="Настройки">
+      <h2>Настройки <span class="version">для телефона</span></h2>
+      <label class="row">
+        <span>Громкость</span>
+        <input id="set-volume" type="range" min="0" max="1" step="0.05">
+        <output id="set-volume-out"></output>
+      </label>
+      <label class="row">
+        <span>Спокойные анимации</span>
+        <input id="set-calm" type="checkbox">
+      </label>
+      <label class="row">
+        <span>Видео с настоящим зверем</span>
+        <input id="set-video" type="checkbox">
+      </label>
+      <label class="row">
+        <span>Сам возвращаться ко всем зверям</span>
+        <input id="set-auto-return" type="checkbox">
+      </label>
+      <h3>Голос взрослого</h3>
+      <p class="status" id="voice-status">Микрофон выключен</p>
+      <p class="status" id="voice-heard">Услышано: —</p>
+      <p class="status" id="voice-local"></p>
+      <div class="buttons" id="voice-install-row" hidden>
+        <button id="voice-install" type="button">Скачать распознавание на Мак</button>
+      </div>
+      <label class="row">
+        <span>Показывать услышанное на экране</span>
+        <input id="set-show-heard" type="checkbox">
+      </label>
+      <h3>Фото семьи</h3>
+      <p class="hint">Фото хранятся только на этом телефоне и никуда не отправляются. С фото карточка превращается в слайдшоу.</p>
+      <div id="family-photos"></div>
+      <h3>Любимые карточки малыша</h3>
+      <ol class="fav-list" id="fav-list"></ol>
+      <label class="row">
+        <span>Показывать карточки сами, если 5 секунд ничего не выбирают (любимая, потом случайная)</span>
+        <input id="set-idle" type="checkbox">
+      </label>
+      <div class="buttons">
+        <button id="fav-reset" type="button">Сбросить счёт</button>
+      </div>
+      <h3>Голос малыша</h3>
+      <p class="status" id="child-status">Модель ещё не обучена</p>
+      <label class="row">
+        <span>Зелёные полоски: насколько выучен голос малыша</span>
+        <input id="set-rings" type="checkbox">
+      </label>
+      <label class="row">
+        <span>Уверенность</span>
+        <input id="set-child-threshold" type="range" min="0.5" max="0.95" step="0.05">
+        <output id="set-child-threshold-out"></output>
+      </label>
+      <div class="buttons">
+        <button id="open-child" type="button">Учим голос малыша…</button>
+      </div>
+      <p class="hint">Листайте страницы пальцем влево-вправо. Кнопку «Малыш» держите, пока малыш говорит. Чтобы игра открывалась на весь экран, как приложение: «Поделиться» → «На экран „Домой“».</p>
+      <div class="buttons">
+        <button id="set-test" type="button">Проверить звук</button>
+        <button id="set-fullscreen" type="button">Во весь экран</button>
+        <button id="set-close" type="button" class="primary">Закрыть</button>
+      </div>
+    </div>
+  </div>
+
+  <div id="child-panel" class="settings child-panel" hidden>
+    <div class="settings-box wide" role="dialog" aria-label="Учим голос малыша">
+      <h2>Учим голос малыша</h2>
+      <p class="hint">Нажмите «Записать» и попросите малыша сказать своё слово для зверька: как он говорит, так и правильно («ко», «мяу», «кя», «у-а»). Начните со звукоподражаний — малышу они проще, а модели легче их различать. Строка «Фон» — это тишина, шум квартиры, лепет и голоса взрослых: без неё модель будет «слышать» зверей в любом звуке.</p>
+      <p class="status" id="child-panel-status"></p>
+      <div id="child-rows" class="child-rows"></div>
+      <div class="progress" id="child-progress" hidden><div></div></div>
+      <div class="buttons">
+        <button id="child-train" type="button">Обучить</button>
+        <button id="child-export" type="button">Сохранить копию</button>
+        <button id="child-import" type="button">Загрузить копию</button>
+        <input id="child-import-file" type="file" accept=".json,application/json" hidden>
+        <button id="child-old" type="button" hidden></button>
+        <button id="child-close" type="button" class="primary">Готово</button>
+      </div>
+    </div>
+  </div>
+
+  <script type="module" src="js/main.js"></script>
+</body>
+</html>

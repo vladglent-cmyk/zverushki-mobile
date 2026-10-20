@@ -1,0 +1,14 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 400 400" class="animal-svg">
+  <g class="whole" style="transform-origin:200px 370px" stroke="#6E5A50" stroke-width="7" stroke-linejoin="round" stroke-linecap="round">
+    <g class="part boot1" style="transform-origin:130px 340px">
+    <path d="M60 90 H140 V270 L210 290 C 230 296, 230 340, 210 340 H54 Z" fill="#F7C76A"/>
+    <path d="M54 340 H220" fill="none" stroke-width="16"/>
+    <path d="M60 120 H140" fill="none" stroke="#E0A65A" stroke-width="10"/>
+    </g>
+    <g class="part boot2" style="transform-origin:266px 340px">
+    <path d="M196 90 H276 V270 L346 290 C 366 296, 366 340, 346 340 H190 Z" fill="#F7C76A"/>
+    <path d="M190 340 H356" fill="none" stroke-width="16"/>
+    <path d="M196 120 H276" fill="none" stroke="#E0A65A" stroke-width="10"/>
+    </g>
+  </g>
+</svg>

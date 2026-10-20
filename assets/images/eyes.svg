@@ -1,0 +1,18 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 400 400" class="animal-svg">
+  <g class="whole" style="transform-origin:200px 300px" stroke="#6E5A50" stroke-width="7" stroke-linejoin="round" stroke-linecap="round">
+    <circle cx="200" cy="190" r="70" fill="#F7DC7C" stroke="none" opacity=".55"/>
+    <g class="part ears" style="transform-origin:200px 200px"><ellipse cx="104" cy="200" rx="18" ry="26" fill="#F6D5BE"/><ellipse cx="296" cy="200" rx="18" ry="26" fill="#F6D5BE"/></g>
+    <circle cx="200" cy="200" r="100" fill="#F6D5BE"/>
+    <path d="M104 170 C 110 80, 160 60, 200 60 C 240 60, 290 80, 296 170 C 270 120, 230 104, 200 106 C 170 104, 130 120, 110 150 Z" fill="#B98A62"/>
+    <circle cx="140" cy="236" r="14" fill="#F4B6B0" stroke="none" opacity=".65"/>
+    <circle cx="260" cy="236" r="14" fill="#F4B6B0" stroke="none" opacity=".65"/>
+    <g class="eyes" style="transform-origin:200px 190px" stroke="none">
+      <ellipse cx="166" cy="190" rx="16" ry="20" fill="#4A3B35"/>
+      <circle cx="169" cy="182" r="7" fill="#fff"/>
+      <ellipse cx="234" cy="190" rx="16" ry="20" fill="#4A3B35"/>
+      <circle cx="237" cy="182" r="7" fill="#fff"/>
+    </g>
+    <ellipse cx="200" cy="222" rx="8" ry="6" fill="#F2B7A0" stroke="none"/>
+    <path d="M186 250 Q200 262 214 250" fill="none" stroke-width="5"/>
+  </g>
+</svg>

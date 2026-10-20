@@ -1,0 +1,18 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 400 400" class="animal-svg">
+  <g class="whole" style="transform-origin:200px 370px" stroke="#6E5A50" stroke-width="7" stroke-linejoin="round" stroke-linecap="round">
+    <ellipse cx="110" cy="350" rx="44" ry="18" fill="#A9D18E"/><ellipse cx="290" cy="350" rx="44" ry="18" fill="#A9D18E"/>
+    <ellipse cx="200" cy="270" rx="140" ry="96" fill="#A9D18E"/>
+    <ellipse cx="200" cy="300" rx="80" ry="54" fill="#D6EBC4" stroke="none"/>
+    <circle cx="136" cy="174" r="46" fill="#A9D18E"/><circle cx="264" cy="174" r="46" fill="#A9D18E"/>
+    <circle cx="136" cy="170" r="28" fill="#FFF6EE"/><circle cx="264" cy="170" r="28" fill="#FFF6EE"/>
+    <g class="eyes" style="transform-origin:200px 172px" stroke="none">
+      <ellipse cx="136" cy="172" rx="10" ry="13" fill="#4A3B35"/>
+      <circle cx="139" cy="167" r="4" fill="#fff"/>
+      <ellipse cx="264" cy="172" rx="10" ry="13" fill="#4A3B35"/>
+      <circle cx="267" cy="167" r="4" fill="#fff"/>
+    </g>
+    <circle cx="110" cy="250" r="16" fill="#F4B6B0" stroke="none" opacity=".65"/>
+    <circle cx="290" cy="250" r="16" fill="#F4B6B0" stroke="none" opacity=".65"/>
+    <path d="M130 250 Q200 300 270 250" fill="none" stroke-width="6"/>
+  </g>
+</svg>

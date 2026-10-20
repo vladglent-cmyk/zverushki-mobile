@@ -1,0 +1,21 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 400 400" class="animal-svg">
+  <g class="whole" style="transform-origin:200px 220px" stroke="#6E5A50" stroke-width="7" stroke-linejoin="round" stroke-linecap="round">
+    <!-- облачко сзади -->
+    <path d="M50 300 C 40 280, 64 266, 80 276 C 86 256, 120 256, 126 278 C 142 274, 154 290, 142 302 Z" fill="#FFFFFF" stroke-width="5"/>
+    <!-- дальнее крыло и хвост -->
+    <path d="M200 196 L232 120 L262 120 L248 196 Z" fill="#B9D4EC"/>
+    <path d="M70 196 L52 136 L80 136 L108 190 Z" fill="#F29C8E"/>
+    <!-- фюзеляж -->
+    <path d="M60 196 C 60 176, 80 168, 110 168 H300 C 336 168, 360 184, 360 206 C 360 228, 336 240, 300 240 H110 C 80 240, 60 222, 60 206 Z" fill="#E7F0F8"/>
+    <path d="M300 168 C 336 168, 360 184, 360 206 C 340 206, 318 196, 300 184 Z" fill="#B9D4EC"/>
+    <g fill="#B9D4EC" stroke-width="5">
+      <circle cx="140" cy="200" r="11"/><circle cx="176" cy="200" r="11"/><circle cx="212" cy="200" r="11"/><circle cx="248" cy="200" r="11"/>
+    </g>
+    <!-- ближнее крыло -->
+    <path d="M176 214 L220 290 L254 290 L240 214 Z" fill="#9EC3E4"/>
+    <circle cx="322" cy="222" r="10" fill="#F7B9B9" stroke="none"/>
+    <g class="eyes" style="transform-origin:318px 196px" stroke="none">
+      <ellipse cx="318" cy="196" rx="7" ry="10" fill="#4A3B35"/>
+    </g>
+  </g>
+</svg>

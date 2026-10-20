@@ -1,0 +1,11 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 400 400" class="animal-svg">
+  <g class="whole" style="transform-origin:200px 360px" stroke="#6E5A50" stroke-width="7" stroke-linejoin="round" stroke-linecap="round">
+    <g class="part arm" style="transform-origin:120px 80px">
+      <path d="M120 80 L196 150" fill="none" stroke="#B98A62" stroke-width="10"/><circle cx="198" cy="152" r="12" fill="#F4F1EC"/>
+    </g>
+    <path d="M280 80 L210 150" fill="none" stroke="#B98A62" stroke-width="10"/><circle cx="208" cy="152" r="12" fill="#F4F1EC"/>
+    <path d="M70 190 V310 C 70 350, 330 350, 330 310 V190 Z" fill="#EE8C80"/>
+    <path d="M70 200 L120 330 L170 200 L220 336 L270 200 L320 324" fill="none" stroke="#F7DC7C" stroke-width="8"/>
+    <ellipse cx="200" cy="190" rx="130" ry="40" fill="#F4F1EC"/>
+  </g>
+</svg>

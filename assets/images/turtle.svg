@@ -1,0 +1,27 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 400 400" class="animal-svg">
+  <g class="whole" style="transform-origin:200px 350px" stroke="#6E5A50" stroke-width="7" stroke-linejoin="round" stroke-linecap="round">
+    <!-- лапки и хвостик -->
+    <ellipse cx="128" cy="322" rx="28" ry="32" fill="#B5D3A8"/>
+    <ellipse cx="268" cy="322" rx="28" ry="32" fill="#B5D3A8"/>
+    <path d="M78 290 L44 304 L82 312 Z" fill="#B5D3A8"/>
+    <!-- голова (прячется под панцирь) -->
+    <g class="part head" style="transform-origin:300px 260px">
+      <ellipse cx="296" cy="270" rx="44" ry="28" fill="#B5D3A8"/>
+      <circle cx="336" cy="232" r="46" fill="#B5D3A8"/>
+      <circle cx="362" cy="250" r="11" fill="#F4B6B0" stroke="none" opacity=".65"/>
+      <g class="eyes" style="transform-origin:350px 222px" stroke="none">
+        <ellipse cx="350" cy="222" rx="10" ry="13" fill="#4A3B35"/>
+        <circle cx="353" cy="216" r="4" fill="#fff"/>
+      </g>
+      <path d="M342 254 Q356 262 370 252" fill="none" stroke-width="5"/>
+    </g>
+    <!-- панцирь -->
+    <path d="M70 302 C 66 160, 334 160, 330 302 Z" fill="#8DB889"/>
+    <g fill="#C9E0B8" stroke="none">
+      <path d="M200 196 L232 214 L232 250 L200 268 L168 250 L168 214 Z"/>
+      <path d="M128 220 L150 232 L150 268 L120 282 L100 266 C 104 246, 112 232, 128 220 Z"/>
+      <path d="M272 220 L250 232 L250 268 L280 282 L300 266 C 296 246, 288 232, 272 220 Z"/>
+    </g>
+    <path d="M58 300 Q200 328 342 300 Q350 316 334 322 Q200 348 66 322 Q50 316 58 300 Z" fill="#E8D9A8"/>
+  </g>
+</svg>

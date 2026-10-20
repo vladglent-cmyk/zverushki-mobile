@@ -1,0 +1,26 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 400 400" class="animal-svg">
+  <g class="whole" style="transform-origin:200px 300px" stroke="#6E5A50" stroke-width="7" stroke-linejoin="round" stroke-linecap="round">
+    <!-- винт сверху: медленно «крутится» -->
+    <path d="M190 120 V146" fill="none" stroke-width="10"/>
+    <g class="part rotor" style="transform-origin:190px 114px">
+      <rect x="60" y="106" width="260" height="16" rx="8" fill="#8C8790"/>
+    </g>
+    <!-- хвост -->
+    <path d="M250 214 H350" fill="none" stroke-width="22"/>
+    <path d="M250 214 H350" fill="none" stroke="#F5D27A" stroke-width="10"/>
+    <g class="part tailrotor" style="transform-origin:352px 196px">
+      <ellipse cx="352" cy="196" rx="8" ry="30" fill="#8C8790"/>
+    </g>
+    <!-- кабина -->
+    <path d="M90 214 C 90 170, 130 146, 186 146 C 240 146, 270 176, 270 214 C 270 256, 236 276, 186 276 C 130 276, 90 256, 90 214 Z" fill="#F5D27A"/>
+    <path d="M104 214 C 104 182, 130 162, 166 160 L166 214 Z" fill="#CFE6F5"/>
+    <path d="M120 300 H260 M140 276 L130 300 M230 276 L240 300" fill="none" stroke-width="7"/>
+    <circle cx="214" cy="226" r="12" fill="#F7B9B9" stroke="none"/>
+    <g class="eyes" style="transform-origin:222px 196px" stroke="none">
+      <ellipse cx="206" cy="196" rx="8" ry="11" fill="#4A3B35"/>
+      <ellipse cx="238" cy="196" rx="8" ry="11" fill="#4A3B35"/>
+      <circle cx="209" cy="191" r="3" fill="#fff"/>
+      <circle cx="241" cy="191" r="3" fill="#fff"/>
+    </g>
+  </g>
+</svg>

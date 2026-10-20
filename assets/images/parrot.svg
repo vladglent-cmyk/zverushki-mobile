@@ -1,0 +1,18 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 400 400" class="animal-svg">
+  <g class="whole" style="transform-origin:200px 385px" stroke="#6E5A50" stroke-width="7" stroke-linejoin="round" stroke-linecap="round">
+    <path d="M60 300 H340" fill="none" stroke="#A07C5C" stroke-width="16"/>
+    <path d="M190 330 L170 392 L210 392 Z" fill="#6FA8D8"/>
+    <path d="M200 120 C 270 120, 280 200, 270 260 C 260 310, 230 330, 200 330 C 170 330, 140 310, 134 260 C 126 200, 130 120, 200 120 Z" fill="#8CCB7A"/>
+    <g class="part wing" style="transform-origin:236px 220px"><path d="M240 180 C 290 210, 290 290, 250 316 C 236 280, 230 230, 240 180 Z" fill="#5FA4D6"/></g>
+    <path d="M180 300 L174 316 M220 300 L226 316" fill="none" stroke="#8C6A5F" stroke-width="8"/>
+    <g class="part head" style="transform-origin:200px 220px">
+      <circle cx="196" cy="142" r="70" fill="#8CCB7A"/>
+      <circle cx="172" cy="160" r="26" fill="#F7DC7C" stroke="none"/>
+      <path d="M240 128 C 290 120, 300 170, 270 190 C 266 170, 254 160, 236 160 Z" fill="#F2B04F"/>
+    <g class="eyes" style="transform-origin:214px 128px" stroke="none">
+      <ellipse cx="214" cy="128" rx="9" ry="11" fill="#4A3B35"/>
+      <circle cx="217" cy="124" r="4" fill="#fff"/>
+    </g>
+    </g>
+  </g>
+</svg>

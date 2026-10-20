@@ -1,0 +1,9 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 400 400" class="animal-svg">
+  <g class="whole" style="transform-origin:200px 340px" stroke="#6E5A50" stroke-width="7" stroke-linejoin="round" stroke-linecap="round">
+    <path d="M100 300 H290" fill="none" stroke="#7DBFB2" stroke-width="22"/>
+    <path d="M290 300 L262 100" fill="none" stroke="#7DBFB2" stroke-width="14"/>
+    <path d="M230 96 H300" fill="none" stroke-width="14"/>
+    <g class="part wheel" style="transform-origin:100px 316px"><circle cx="100" cy="316" r="32" fill="#5F575C"/><circle cx="100" cy="316" r="12" fill="#D9D4CF"/><path d="M100 291 V303" fill="none" stroke="#D9D4CF" stroke-width="6"/></g>
+    <g class="part wheel" style="transform-origin:296px 316px"><circle cx="296" cy="316" r="32" fill="#5F575C"/><circle cx="296" cy="316" r="12" fill="#D9D4CF"/><path d="M296 291 V303" fill="none" stroke="#D9D4CF" stroke-width="6"/></g>
+  </g>
+</svg>

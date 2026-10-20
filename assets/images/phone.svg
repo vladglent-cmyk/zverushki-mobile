@@ -1,0 +1,19 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 400 400" class="animal-svg">
+  <g class="whole" style="transform-origin:200px 360px" stroke="#6E5A50" stroke-width="7" stroke-linejoin="round" stroke-linecap="round">
+    <!-- корпус старого телефона -->
+    <path d="M80 340 L110 196 C 114 178, 128 170, 146 170 H254 C 272 170, 286 178, 290 196 L320 340 Z" fill="#EE9F92"/>
+    <!-- диск -->
+    <circle cx="200" cy="266" r="62" fill="#FFF6EE"/>
+    <g fill="#EE9F92" stroke-width="4">
+      <circle cx="200" cy="222" r="9"/><circle cx="234" cy="234" r="9"/><circle cx="246" cy="266" r="9"/>
+      <circle cx="234" cy="298" r="9"/><circle cx="166" cy="298" r="9"/><circle cx="154" cy="266" r="9"/><circle cx="166" cy="234" r="9"/>
+    </g>
+    <circle cx="200" cy="266" r="18" fill="#F7D5CF" stroke-width="5"/>
+    <!-- трубка подпрыгивает, когда звонит -->
+    <g class="part handset" style="transform-origin:200px 150px">
+      <path d="M86 150 C 86 110, 130 92, 200 92 C 270 92, 314 110, 314 150 L282 164 C 272 140, 250 132, 200 132 C 150 132, 128 140, 118 164 Z" fill="#E48C7E"/>
+      <ellipse cx="102" cy="162" rx="28" ry="16" fill="#E48C7E"/>
+      <ellipse cx="298" cy="162" rx="28" ry="16" fill="#E48C7E"/>
+    </g>
+  </g>
+</svg>

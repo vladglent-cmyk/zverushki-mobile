@@ -1,0 +1,31 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 400 400" class="animal-svg">
+  <g class="whole" style="transform-origin:200px 385px" stroke="#6E5A50" stroke-width="7" stroke-linejoin="round" stroke-linecap="round">
+    <!-- тело -->
+    <ellipse cx="200" cy="306" rx="96" ry="74" fill="#FBF8F3"/>
+    <path d="M128 286 Q150 262 176 282 Q170 312 140 312 Q124 304 128 286 Z" fill="#9C8478" stroke="none"/>
+    <path d="M238 318 Q262 300 280 318 Q276 340 254 342 Q236 336 238 318 Z" fill="#9C8478" stroke="none"/>
+    <ellipse cx="160" cy="372" rx="28" ry="16" fill="#FBF8F3"/>
+    <ellipse cx="240" cy="372" rx="28" ry="16" fill="#FBF8F3"/>
+    <!-- голова -->
+    <g class="part head" style="transform-origin:200px 255px">
+      <path d="M146 82 Q130 52 146 40 Q156 60 166 76 Z" fill="#F3E3C0"/>
+      <path d="M254 82 Q270 52 254 40 Q244 60 234 76 Z" fill="#F3E3C0"/>
+      <ellipse cx="94" cy="132" rx="40" ry="20" fill="#FBF8F3" transform="rotate(-20 94 132)"/>
+      <ellipse cx="306" cy="132" rx="40" ry="20" fill="#FBF8F3" transform="rotate(20 306 132)"/>
+      <ellipse cx="94" cy="132" rx="24" ry="9" fill="#F4C6C0" stroke="none" transform="rotate(-20 94 132)"/>
+      <ellipse cx="306" cy="132" rx="24" ry="9" fill="#F4C6C0" stroke="none" transform="rotate(20 306 132)"/>
+      <ellipse cx="200" cy="152" rx="94" ry="88" fill="#FBF8F3"/>
+      <path d="M232 80 Q270 82 282 118 Q262 140 238 126 Q222 104 232 80 Z" fill="#9C8478" stroke="none"/>
+      <ellipse cx="200" cy="206" rx="72" ry="44" fill="#F4C6C0"/>
+      <ellipse cx="176" cy="204" rx="8" ry="11" fill="#C98F8A" stroke="none"/>
+      <ellipse cx="224" cy="204" rx="8" ry="11" fill="#C98F8A" stroke="none"/>
+      <path d="M184 228 Q200 238 216 228" fill="none" stroke-width="4.5"/>
+      <g class="eyes" style="transform-origin:200px 136px" stroke="none">
+        <ellipse cx="160" cy="136" rx="12" ry="16" fill="#4A3B35"/>
+        <ellipse cx="240" cy="136" rx="12" ry="16" fill="#4A3B35"/>
+        <circle cx="164" cy="129" r="4.5" fill="#fff"/>
+        <circle cx="244" cy="129" r="4.5" fill="#fff"/>
+      </g>
+    </g>
+  </g>
+</svg>

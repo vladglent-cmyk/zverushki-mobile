@@ -1,0 +1,8 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 400 400" class="animal-svg">
+  <g class="whole" style="transform-origin:200px 360px" stroke="#6E5A50" stroke-width="7" stroke-linejoin="round" stroke-linecap="round">
+    <path d="M110 70 H180 V250 C 180 300, 170 330, 130 330 H60 C 30 330, 30 286, 60 280 L110 270 Z" fill="#9EC3E4" transform="rotate(-6 145 200)"/>
+    <path d="M110 110 H180 M110 150 H180 M110 190 H180" fill="none" stroke="#FFF6EE" stroke-width="12" transform="rotate(-6 145 200)"/>
+    <path d="M230 70 H300 V250 C 300 300, 290 330, 250 330 H180 C 150 330, 150 286, 180 280 L230 270 Z" fill="#B79AD6" transform="rotate(6 265 200)"/>
+    <path d="M230 110 H300 M230 150 H300 M230 190 H300" fill="none" stroke="#FFF6EE" stroke-width="12" transform="rotate(6 265 200)"/>
+  </g>
+</svg>

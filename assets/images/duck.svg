@@ -1,0 +1,25 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 400 400" class="animal-svg">
+  <g class="whole" style="transform-origin:210px 385px" stroke="#6E5A50" stroke-width="7" stroke-linejoin="round" stroke-linecap="round">
+    <!-- лапки -->
+    <ellipse cx="180" cy="368" rx="28" ry="12" fill="#F2AE72"/>
+    <ellipse cx="244" cy="368" rx="28" ry="12" fill="#F2AE72"/>
+    <!-- хвостик и тело -->
+    <path d="M300 262 Q352 226 350 286 Z" fill="#F7DC8C"/>
+    <ellipse cx="215" cy="295" rx="112" ry="76" fill="#F7DC8C"/>
+    <!-- крылышко -->
+    <g class="part wing" style="transform-origin:236px 268px">
+      <path d="M196 276 C 214 238, 292 240, 304 290 C 282 322, 226 324, 196 276 Z" fill="#F1CC6C"/>
+    </g>
+    <!-- голова -->
+    <g class="part head" style="transform-origin:170px 240px">
+      <circle cx="160" cy="175" r="74" fill="#F7DC8C"/>
+      <path d="M156 102 Q166 82 180 98" fill="none"/>
+      <path d="M98 180 C 58 174, 48 198, 66 208 C 82 218, 102 212, 108 204 Z" fill="#F2AE72"/>
+      <circle cx="178" cy="196" r="15" fill="#F4B6B0" stroke="none" opacity=".65"/>
+      <g class="eyes" style="transform-origin:148px 160px" stroke="none">
+        <ellipse cx="148" cy="160" rx="12" ry="15" fill="#4A3B35"/>
+        <circle cx="152" cy="154" r="4.5" fill="#fff"/>
+      </g>
+    </g>
+  </g>
+</svg>

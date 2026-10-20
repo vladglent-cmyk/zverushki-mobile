@@ -1,0 +1,16 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 400 400" class="animal-svg">
+  <g class="whole" style="transform-origin:200px 370px" stroke="#6E5A50" stroke-width="7" stroke-linejoin="round" stroke-linecap="round">
+    <path d="M200 60 C 196 40, 204 30, 214 24" fill="none" stroke="#8C6A5F" stroke-width="8"/>
+    <path d="M212 44 C 240 20, 280 28, 284 44 C 262 60, 232 60, 212 44 Z" fill="#9CC98A"/>
+    <path d="M200 64 C 160 64, 150 110, 158 150 C 120 180, 80 230, 90 290 C 100 350, 160 370, 200 370 C 240 370, 300 350, 310 290 C 320 230, 280 180, 242 150 C 250 110, 240 64, 200 64 Z" fill="#D8E08A"/>
+    <circle cx="150" cy="274" r="13" fill="#F4B6B0" stroke="none" opacity=".65"/>
+    <circle cx="250" cy="274" r="13" fill="#F4B6B0" stroke="none" opacity=".65"/>
+    <g class="eyes" style="transform-origin:200px 240px" stroke="none">
+      <ellipse cx="172" cy="240" rx="10" ry="12" fill="#4A3B35"/>
+      <circle cx="175" cy="235" r="4" fill="#fff"/>
+      <ellipse cx="228" cy="240" rx="10" ry="12" fill="#4A3B35"/>
+      <circle cx="231" cy="235" r="4" fill="#fff"/>
+    </g>
+    <path d="M185 278 Q200 292 215 278" fill="none" stroke-width="5"/>
+  </g>
+</svg>

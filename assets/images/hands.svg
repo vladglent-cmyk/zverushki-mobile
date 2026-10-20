@@ -1,0 +1,9 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 400 400" class="animal-svg">
+  <g class="whole" style="transform-origin:200px 360px" stroke="#6E5A50" stroke-width="7" stroke-linejoin="round" stroke-linecap="round">
+    <g class="part arm" style="transform-origin:200px 360px">
+      <path d="M150 360 V250 C 120 230, 90 200, 96 186 C 104 172, 130 186, 150 210 V110 C 150 92, 176 92, 176 110 V200 V90 C 176 72, 202 72, 202 90 V196 V100 C 202 82, 228 82, 228 100 V200 V124 C 228 106, 254 106, 254 124 V260 C 254 320, 240 340, 236 360 Z" fill="#F6D5BE"/>
+    <circle cx="184" cy="280" r="12" fill="#F4B6B0" stroke="none" opacity=".65"/>
+      <path d="M184 300 Q200 310 216 300" fill="none" stroke-width="5"/>
+    </g>
+  </g>
+</svg>

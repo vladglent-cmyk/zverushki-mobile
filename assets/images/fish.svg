@@ -1,0 +1,15 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 400 400" class="animal-svg">
+  <g class="whole" style="transform-origin:200px 220px" stroke="#6E5A50" stroke-width="7" stroke-linejoin="round" stroke-linecap="round">
+    <g class="part bubbles" style="transform-origin:316px 70px" fill="#CFE6F5" stroke-width="4"><circle cx="300" cy="90" r="12"/><circle cx="330" cy="60" r="8"/><circle cx="314" cy="36" r="5"/></g>
+    <g class="part tail" style="transform-origin:290px 220px"><path d="M286 220 L362 160 C 350 200, 350 240, 362 280 Z" fill="#F29C6E"/></g>
+    <path d="M150 140 C 180 100, 230 110, 250 150 Z M160 300 C 190 330, 230 320, 240 290 Z" fill="#F29C6E"/>
+    <path d="M40 220 C 60 140, 160 120, 230 140 C 280 156, 300 190, 300 220 C 300 250, 280 284, 230 300 C 160 320, 60 300, 40 220 Z" fill="#F6B07A"/>
+    <path d="M190 150 Q170 220 190 290" fill="none" stroke-width="5" opacity=".5"/>
+    <circle cx="92" cy="244" r="12" fill="#F4B6B0" stroke="none" opacity=".7"/>
+    <g class="eyes" style="transform-origin:100px 206px" stroke="none">
+      <ellipse cx="100" cy="206" rx="10" ry="13" fill="#4A3B35"/>
+      <circle cx="103" cy="201" r="4" fill="#fff"/>
+    </g>
+    <path d="M52 246 Q70 260 90 252" fill="none" stroke-width="5"/>
+  </g>
+</svg>

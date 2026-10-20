@@ -1,0 +1,36 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 400 400" class="animal-svg">
+  <g class="whole" style="transform-origin:200px 385px" stroke="#6E5A50" stroke-width="7" stroke-linejoin="round" stroke-linecap="round">
+    <!-- ножки и тело -->
+    <path d="M150 330 V384 M186 336 V384 M236 336 V384 M270 330 V384" fill="none" stroke="#6E5A50" stroke-width="22"/>
+    <path d="M150 330 V384 M186 336 V384 M236 336 V384 M270 330 V384" fill="none" stroke="#F5D27A" stroke-width="10"/>
+    <ellipse cx="212" cy="304" rx="90" ry="50" fill="#F5D27A"/>
+    <g fill="#D69E5E" stroke="none">
+      <circle cx="180" cy="296" r="13"/><circle cx="222" cy="318" r="11"/><circle cx="254" cy="292" r="12"/><circle cx="206" cy="282" r="8"/>
+    </g>
+    <path d="M300 296 Q318 300 320 324" fill="none" stroke-width="5"/>
+    <!-- шея и голова кивают вместе -->
+    <g class="part head" style="transform-origin:150px 300px">
+      <path d="M126 300 L150 120 L190 124 L176 304 Z" fill="#F5D27A"/>
+      <g fill="#D69E5E" stroke="none">
+        <circle cx="158" cy="160" r="9"/><circle cx="160" cy="210" r="10"/><circle cx="154" cy="258" r="9"/>
+      </g>
+      <path d="M150 44 V20 M188 44 V20" fill="none" stroke-width="6"/>
+      <circle cx="150" cy="18" r="8" fill="#B47C49"/>
+      <circle cx="188" cy="18" r="8" fill="#B47C49"/>
+      <ellipse cx="118" cy="66" rx="24" ry="12" fill="#F5D27A" transform="rotate(-20 118 66)"/>
+      <ellipse cx="226" cy="66" rx="24" ry="12" fill="#F5D27A" transform="rotate(20 226 66)"/>
+      <ellipse cx="170" cy="86" rx="54" ry="50" fill="#F5D27A"/>
+      <ellipse cx="170" cy="118" rx="38" ry="24" fill="#F8E2A8"/>
+      <ellipse cx="158" cy="116" rx="4" ry="5" fill="#A07C5C" stroke="none"/>
+      <ellipse cx="182" cy="116" rx="4" ry="5" fill="#A07C5C" stroke="none"/>
+      <circle cx="132" cy="98" r="10" fill="#F4B6B0" stroke="none" opacity=".6"/>
+      <circle cx="208" cy="98" r="10" fill="#F4B6B0" stroke="none" opacity=".6"/>
+      <g class="eyes" style="transform-origin:170px 80px" stroke="none">
+        <ellipse cx="150" cy="80" rx="8" ry="11" fill="#4A3B35"/>
+        <ellipse cx="190" cy="80" rx="8" ry="11" fill="#4A3B35"/>
+        <circle cx="153" cy="75" r="3" fill="#fff"/>
+        <circle cx="193" cy="75" r="3" fill="#fff"/>
+      </g>
+    </g>
+  </g>
+</svg>

@@ -1,0 +1,11 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 400 400" class="animal-svg">
+  <g class="whole" style="transform-origin:200px 330px" stroke="#6E5A50" stroke-width="7" stroke-linejoin="round" stroke-linecap="round">
+    <path d="M200 70 V270" fill="none" stroke-width="8"/>
+    <path d="M206 80 C 270 130, 300 200, 300 250 H206 Z" fill="#FFFFFF"/>
+    <path d="M194 110 C 150 150, 120 210, 116 250 H194 Z" fill="#F4C6C0"/>
+    <path d="M206 70 L246 84 L206 96 Z" fill="#E48C7E"/>
+    <path d="M70 262 H330 C 320 310, 280 330, 200 330 C 120 330, 80 310, 70 262 Z" fill="#EE9F92"/>
+    <g fill="#CFE6F5" stroke-width="4"><circle cx="150" cy="292" r="10"/><circle cx="200" cy="292" r="10"/><circle cx="250" cy="292" r="10"/></g>
+    <path d="M30 346 Q60 330 90 346 Q120 362 150 346 Q180 330 210 346 Q240 362 270 346 Q300 330 330 346 Q350 356 370 346" fill="none" stroke="#9EC3E4" stroke-width="8"/>
+  </g>
+</svg>

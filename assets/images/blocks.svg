@@ -1,0 +1,12 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 400 400" class="animal-svg">
+  <g class="whole" style="transform-origin:200px 380px" stroke="#6E5A50" stroke-width="7" stroke-linejoin="round" stroke-linecap="round">
+    <rect x="80" y="256" width="120" height="120" rx="14" fill="#9EC3E4"/>
+    <text x="140" y="338" text-anchor="middle" font-family="ui-rounded, sans-serif" font-size="70" font-weight="700" fill="#FFF6EE" stroke="none">А</text>
+    <rect x="200" y="256" width="120" height="120" rx="14" fill="#9CC98A"/>
+    <text x="260" y="338" text-anchor="middle" font-family="ui-rounded, sans-serif" font-size="70" font-weight="700" fill="#FFF6EE" stroke="none">Б</text>
+    <g class="part top" style="transform-origin:200px 196px">
+    <rect x="140" y="136" width="120" height="120" rx="14" fill="#EE9F92"/>
+    <text x="200" y="218" text-anchor="middle" font-family="ui-rounded, sans-serif" font-size="70" font-weight="700" fill="#FFF6EE" stroke="none">В</text>
+    </g>
+  </g>
+</svg>
