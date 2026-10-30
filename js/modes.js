@@ -188,7 +188,8 @@ export function initModes({ scene, onModeChange }) {
     peekAnimal.innerHTML = animal.photos
       ? `<img class="peek-photo" src="${animal.photos[0]}" alt="">`
       : animalSvg(animal.id);
-    peekAnimal.classList.remove('up');
+    peekAnimal.dataset.anim = animal.photos ? 'slides' : animal.animation;
+    peekAnimal.classList.remove('up', 'act');
   }
 
   function startPeek() {
@@ -203,6 +204,7 @@ export function initModes({ scene, onModeChange }) {
   function stopPeek() {
     if (mode !== 'peek') return;
     peek.classList.remove('visible');
+    peek.querySelector('.peek-box').classList.remove('open');
     $('grid').classList.add('visible');
     sound.stop();
     setMode(null);
@@ -211,15 +213,19 @@ export function initModes({ scene, onModeChange }) {
   async function peekOut() {
     if (mode !== 'peek' || peekBusy) return;
     peekBusy = true;
-    peekAnimal.classList.add('up');
-    await wait(900);
+    const box = peekAnimal.parentElement;
+    box.classList.add('open');           // кусты разъезжаются в стороны
+    peekAnimal.classList.add('up');      // зверь выходит целиком
+    await wait(1000);
+    peekAnimal.classList.add('act');
     sound.play(ANIMALS[peekIndex]);
     await wait(600);
     while (mode === 'peek' && !sound.isQuiet(0)) await wait(300);
     await wait(PEEK_SHOW_MS);
     if (mode === 'peek') {
-      peekAnimal.classList.remove('up');
-      await wait(1000);
+      peekAnimal.classList.remove('up', 'act');
+      box.classList.remove('open');      // кусты снова сходятся
+      await wait(1200);
       if (mode === 'peek') placePeek();
     }
     peekBusy = false;

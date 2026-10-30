@@ -28,19 +28,35 @@
       </button>
       <div class="peek-box">
         <div id="peek-animal" class="peek-animal"></div>
-        <svg class="bush" viewBox="0 0 400 220" aria-hidden="true">
-          <g stroke="#6E5A50" stroke-width="7" stroke-linejoin="round" fill="#A9CC98">
-            <circle cx="70" cy="140" r="66"/>
-            <circle cx="160" cy="104" r="78"/>
-            <circle cx="250" cy="108" r="76"/>
-            <circle cx="332" cy="142" r="64"/>
+        <!-- Куст из двух половинок: на «ку-ку» они разъезжаются, и зверь виден целиком -->
+        <svg class="bush bush-l" viewBox="0 0 270 290" aria-hidden="true">
+          <g>
+            <g stroke="#6E5A50" stroke-width="7" stroke-linejoin="round" fill="#A9CC98">
+              <circle cx="78" cy="196" r="72"/>
+              <circle cx="150" cy="120" r="88"/>
+              <circle cx="214" cy="200" r="70"/>
+            </g>
+            <rect x="4" y="196" width="214" height="94" fill="#A9CC98"/>
+            <g fill="#BFDDAE">
+              <circle cx="128" cy="96" r="22"/>
+              <circle cx="72" cy="182" r="13"/>
+              <circle cx="206" cy="186" r="15"/>
+            </g>
           </g>
-          <rect x="4" y="140" width="392" height="80" fill="#A9CC98"/>
-          <g fill="#BFDDAE">
-            <circle cx="140" cy="92" r="20"/>
-            <circle cx="236" cy="98" r="16"/>
-            <circle cx="66" cy="132" r="12"/>
-            <circle cx="320" cy="134" r="14"/>
+        </svg>
+        <svg class="bush bush-r" viewBox="0 0 270 290" aria-hidden="true">
+          <g transform="translate(270 0) scale(-1 1)">
+            <g stroke="#6E5A50" stroke-width="7" stroke-linejoin="round" fill="#A9CC98">
+              <circle cx="78" cy="196" r="72"/>
+              <circle cx="150" cy="120" r="88"/>
+              <circle cx="214" cy="200" r="70"/>
+            </g>
+            <rect x="4" y="196" width="214" height="94" fill="#A9CC98"/>
+            <g fill="#BFDDAE">
+              <circle cx="128" cy="96" r="22"/>
+              <circle cx="72" cy="182" r="13"/>
+              <circle cx="206" cy="186" r="15"/>
+            </g>
           </g>
         </svg>
       </div>
