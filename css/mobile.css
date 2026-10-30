@@ -138,6 +138,16 @@ body[data-mode] .page-dots { opacity: 0; pointer-events: none; }
   border-width: 5px;
 }
 
+/* на телефоне рисунок в уголке не вылезает за край экрана */
+.stage-card.real .tile-pic {
+  --pic-scale: 0.4;
+  transform: translate(33%, 28%) scale(var(--pic-scale));
+}
+
+.stage-card.real .tile-circle {
+  box-shadow: 0 0 0 calc(5px / var(--pic-scale)) var(--card), var(--shadow);
+}
+
 /* ---------- подсказки, вопрос, сон, прятки ---------- */
 
 .kid-bubble {

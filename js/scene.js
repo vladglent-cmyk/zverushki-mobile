@@ -33,8 +33,10 @@ export function tileHtml(animal) {
     ? `<div class="tile-animal tile-photo" data-anim="slides"><img class="on" src="${animal.photos[0]}" alt=""></div>`
     : `<div class="tile-animal" data-anim="${animal.animation}">${svgCache.get(animal.id) || ''}</div>`;
   return `
-    <div class="tile-circle"></div>
-    ${pic}
+    <div class="tile-pic">
+      <div class="tile-circle"></div>
+      ${pic}
+    </div>
     <div class="tile-name">${animal.name}</div>`;
 }
 
@@ -51,6 +53,7 @@ export class Scene {
     this.stage = stage;
     this.stageTile = stageTile;
     this.kruzhok = kruzhok;
+    this.card = kruzhok.parentElement;   // .stage-card: класс real — видео большое, рисунок в уголке
     this.video = kruzhok.querySelector('video');
     this.videos = videos || {};
     this.videoEnabled = videoEnabled;
@@ -354,7 +357,6 @@ export class Scene {
     this.onCard?.(this.index);
     this.cancelReturn();
     if (this.actTimer) return this.onShow?.(ANIMALS[this.index]);
-    this.video.pause();   // пока двигается рисунок, видео стоит
     this.act();
   }
 
@@ -365,10 +367,13 @@ export class Scene {
     this.onShow?.(animal);
     clearTimeout(this.actTimer);
     if (animal.photos) return this.slideshow(el, animal.photos);
+    // Настоящий зверь сразу крупно (видео), рисунок уезжает маленьким кружком вниз направо
+    // и двигается там под звук. Если видео нет — рисунок остаётся большим, как раньше.
+    const withVideo = this.playVideo();
     this.actTimer = setTimeout(() => {
       el.classList.remove('act');
       this.actTimer = null;
-      if (!this.playVideo()) this.scheduleReturn();
+      if (!withVideo) this.scheduleReturn();
     }, ACT_MS);
   }
 
@@ -389,7 +394,7 @@ export class Scene {
     this.actTimer = setTimeout(step, SLIDE_MS);
   }
 
-  // Видеокружок с настоящим зверем: после рисованной анимации, один раз, без звука.
+  // Настоящий зверь: видео в большом круге, один раз, без звука (звук — у рисунка).
   playVideo() {
     const clip = this.videos[ANIMALS[this.index]?.id];
     if (!this.open || !clip || !this.videoEnabled()) return false;
@@ -409,6 +414,7 @@ export class Scene {
         this.kruzhok.hidden = false;
         requestAnimationFrame(() => this.kruzhok.classList.add('shown'));
       }
+      this.card.classList.add('real');
       this.videoTimer = setTimeout(finish, MAX_VIDEO_MS);
     };
     const finish = () => {
@@ -421,6 +427,11 @@ export class Scene {
       if (clip.end && video.currentTime >= clip.end && !video.paused) finish();
     };
     video.onended = finish;
+    video.onerror = () => {   // видео не загрузилось — рисунок обратно крупно
+      if (token !== this.videoToken) return;
+      this.card.classList.remove('real');
+      this.scheduleReturn();
+    };
     if (video.readyState >= 1) begin();
     else video.addEventListener('loadedmetadata', begin, { once: true });
     return true;
@@ -452,6 +463,7 @@ export class Scene {
     this.video.pause();
     this.kruzhok.classList.remove('shown');
     this.kruzhok.hidden = true;
+    this.card.classList.remove('real');
   }
 
   stopAct() {

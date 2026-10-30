@@ -1128,6 +1128,37 @@ body.no-voice .adult-item { display: none; }
   display: block;
 }
 
+/* Рисунок и цветной круг — одним слоем, чтобы вместе уезжать в уголок. */
+.tile-pic {
+  position: absolute;
+  inset: 0;
+  transform-origin: 50% 42.4%;
+  transition: transform calc(0.9s * var(--dur)) var(--ease);
+}
+
+/* Есть видео: настоящий зверь крупно в большом круге, рисунок — маленьким кружком внизу справа. */
+.stage-card.real .kruzhok {
+  left: 4%;
+  top: 2%;
+  right: auto;
+  bottom: auto;
+  width: 92%;
+  border: 0;
+  z-index: 1;
+}
+
+.stage-card.real #stage-tile { z-index: 2; pointer-events: none; }
+
+.stage-card.real .tile-pic {
+  --pic-scale: 0.42;
+  transform: translate(52%, 22.4%) scale(var(--pic-scale));
+  pointer-events: auto;
+}
+
+.stage-card.real .tile-circle {
+  box-shadow: 0 0 0 calc(8px / var(--pic-scale)) var(--card), var(--shadow);
+}
+
 /* ---------- режимы: Где? / Ку-ку / Спать ---------- */
 
 .mic.mode-btn.on {
