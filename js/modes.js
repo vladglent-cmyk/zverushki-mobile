@@ -30,7 +30,9 @@ export function initModes({ scene, onModeChange }) {
   let mode = null;   // null | 'sleep' | 'quiz' | 'peek'
   const setMode = (m) => {
     mode = m;
-    document.body.dataset.mode = m || '';
+    // без режима атрибут убираем совсем: пустой data-mode="" тоже прятал стрелки страниц
+    if (m) document.body.dataset.mode = m;
+    else delete document.body.dataset.mode;
     for (const id of ['btn-sleep', 'btn-quiz', 'btn-peek']) $(id).classList.toggle('on', $(id).dataset.mode === m);
     onModeChange?.(m);
   };
@@ -181,9 +183,17 @@ export function initModes({ scene, onModeChange }) {
   const peekAnimal = $('peek-animal');
   let peekIndex = -1;
   let peekBusy = false;
+  let peekBag = [];   // все карточки со всех страниц в случайном порядке: пока не выйдут все, никто не повторится
 
   function placePeek() {
-    peekIndex = pickOther(scene.visible(), peekIndex);
+    if (!peekBag.length) {
+      peekBag = ANIMALS.map((_, i) => i).filter((i) => i !== peekIndex);
+      for (let i = peekBag.length - 1; i > 0; i--) {
+        const j = Math.floor(Math.random() * (i + 1));
+        [peekBag[i], peekBag[j]] = [peekBag[j], peekBag[i]];
+      }
+    }
+    peekIndex = peekBag.pop();
     const animal = ANIMALS[peekIndex];
     peekAnimal.innerHTML = animal.photos
       ? `<img class="peek-photo" src="${animal.photos[0]}" alt="">`
