@@ -204,8 +204,13 @@
       <h3>Любимые карточки малыша</h3>
       <ol class="fav-list" id="fav-list"></ol>
       <label class="row">
-        <span>Показывать карточки сами, если 5 секунд ничего не выбирают (любимая, потом случайная)</span>
+        <span>Показывать карточки сами, если ничего не выбирают (любая карточка со всех страниц)</span>
         <input id="set-idle" type="checkbox">
+      </label>
+      <label class="row">
+        <span>Через сколько секунд</span>
+        <input id="set-idle-sec" type="range" min="1" max="5" step="1">
+        <output id="set-idle-sec-out"></output>
       </label>
       <div class="buttons">
         <button id="fav-reset" type="button">Сбросить счёт</button>

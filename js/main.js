@@ -431,16 +431,15 @@ async function init() {
 
   // ---------- любимые карточки и показ «сами собой» ----------
   // Игра считает, сколько раз открывали каждую карточку (нажатием, голосом, клавишей).
-  // Если 5 секунд ничего не выбирают, она сама показывает любимую карточку, в следующий
-  // раз — случайную, и так по очереди. Показанное самой игрой в счёт не идёт.
+  // Если несколько секунд (1–5, в настройках) ничего не выбирают, она сама показывает любую
+  // карточку со всех страниц, без повторов, пока не покажет все. Показанное самой игрой в счёт не идёт.
 
   const STATS_KEY = 'zverushki.stats';
-  const IDLE_MS = 5000;
   let stats = {};
   try { stats = JSON.parse(localStorage.getItem(STATS_KEY) || '{}'); } catch {}
   let autoShowing = false;
   let lastActivity = performance.now();
-  let idleTurn = 0;   // 0 — любимая, 1 — случайная
+  let idleBag = [];   // все карточки в случайном порядке; закончились — перемешиваем заново
   const touch = () => { lastActivity = performance.now(); };
   document.addEventListener('pointerdown', touch, true);
   document.addEventListener('keydown', touch, true);
@@ -456,21 +455,28 @@ async function init() {
     try { localStorage.setItem(STATS_KEY, JSON.stringify(stats)); } catch {}
   };
 
-  // Самая любимая карточка (кроме только что показанной); при равенстве — любая из лучших.
-  function favorite(not) {
-    const known = Object.entries(stats)
-      .map(([id, n]) => [ANIMALS.findIndex((a) => a.id === id), n])
-      .filter(([i]) => i >= 0 && i !== not);
-    if (!known.length) return -1;
-    const max = Math.max(...known.map(([, n]) => n));
-    const top = known.filter(([, n]) => n === max).map(([i]) => i);
-    return top[Math.floor(Math.random() * top.length)];
+  function randomCard(not) {
+    if (!idleBag.length) {
+      idleBag = ANIMALS.map((_, i) => i).filter((i) => i !== not);
+      for (let i = idleBag.length - 1; i > 0; i--) {
+        const j = Math.floor(Math.random() * (i + 1));
+        [idleBag[i], idleBag[j]] = [idleBag[j], idleBag[i]];
+      }
+    }
+    return idleBag.pop();
   }
 
-  function randomCard(not) {
-    const list = scene.visible().filter((i) => i !== not);
-    return list[Math.floor(Math.random() * list.length)];
-  }
+  const idleSec = $('set-idle-sec');
+  const syncIdleSec = () => {
+    idleSec.value = settings.idleSec;
+    $('set-idle-sec-out').textContent = settings.idleSec + ' с';
+  };
+  syncIdleSec();
+  idleSec.addEventListener('input', () => {
+    settings.idleSec = Number(idleSec.value);
+    saveSettings(settings);
+    syncIdleSec();
+  });
 
   setInterval(() => {
     // Пока карточка открыта или что-то происходит — тишина ещё не началась.
@@ -480,15 +486,13 @@ async function init() {
       if (scene.open || scene.busy) touch();
       return;
     }
-    if (performance.now() - lastActivity < IDLE_MS) return;
-    let i = idleTurn === 0 ? favorite(scene.index) : -1;
-    if (i < 0) i = randomCard(scene.index);
-    idleTurn = 1 - idleTurn;
-    if (i == null || i < 0) return;
+    if (performance.now() - lastActivity < settings.idleSec * 1000) return;
+    const i = randomCard(scene.index);
+    if (i == null) return;
     autoShowing = true;
     touch();
     scene.goTo(i);
-  }, 1000);
+  }, 250);
 
   function renderFavorites() {
     const top = Object.entries(stats)

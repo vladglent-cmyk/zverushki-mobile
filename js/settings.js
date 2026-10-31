@@ -11,6 +11,7 @@ export const DEFAULTS = {
   autoReturn: true,
   showRings: true,
   idleShow: true,
+  idleSec: 5,          // через сколько секунд без нажатий карточки показываются сами
   page: 0,
   childThreshold: 0.8,
 };
