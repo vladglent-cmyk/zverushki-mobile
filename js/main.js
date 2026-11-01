@@ -1,5 +1,6 @@
 import { ANIMALS } from './animals.js';
 import { Scene, loadImages, animalSvg } from './scene.js';
+import { initExtras, EXTRA_KINDS } from './extras.js';
 import * as sound from './sound.js';
 import { loadSettings, saveSettings, initGear, initPanel } from './settings.js';
 import { AdultVoice } from './speech-adult.js';
@@ -110,6 +111,24 @@ async function init() {
   renderFamily();
 
   const modes = initModes({ scene });
+
+  // ---------- развивающие вставки (в настройках, по умолчанию выключены) ----------
+  const extras = initExtras({ sound, settings, animalSvg });
+  scene.onExtra = (animal) => (modes.mode ? null : extras.pick(animal));
+  scene.onExtraCancel = () => extras.cancel();
+  $('extras-list').replaceChildren(...EXTRA_KINDS.map(([kind, label]) => {
+    const row = document.createElement('label');
+    row.className = 'row';
+    row.innerHTML = `<span></span><input type="checkbox">`;
+    row.querySelector('span').textContent = label;
+    const box = row.querySelector('input');
+    box.checked = Boolean(settings.extras?.[kind]);
+    box.addEventListener('change', () => {
+      settings.extras = { ...settings.extras, [kind]: box.checked };
+      saveSettings(settings);
+    });
+    return row;
+  }));
 
   // Зверь, услышанный во время смены картинок, показывается чуть позже.
   // Во сне и в «Ку-ку» голосом зверей не открываем.

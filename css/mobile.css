@@ -217,3 +217,7 @@ body[data-mode] .page-dots { opacity: 0; pointer-events: none; }
 .child-row .rec { grid-area: rec; min-width: 0; }
 .child-row .play { grid-area: play; }
 .child-row .del { grid-area: del; }
+
+/* развивающие вставки: на телефоне не вылезают за край */
+.extra-food { left: -3%; box-shadow: 0 0 0 5px var(--card), var(--shadow); }
+.extra-small { right: -2%; }

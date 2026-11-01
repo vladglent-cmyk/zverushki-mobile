@@ -11,7 +11,8 @@ export const DEFAULTS = {
   autoReturn: true,
   showRings: true,
   idleShow: true,
-  idleSec: 5,          // через сколько секунд без нажатий карточки показываются сами
+  idleSec: 5,
+  extras: {},          // развивающие вставки (food, baby, home, action, body, size, count) — по умолчанию все выключены          // через сколько секунд без нажатий карточки показываются сами
   page: 0,
   childThreshold: 0.8,
 };

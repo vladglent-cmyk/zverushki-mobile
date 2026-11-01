@@ -1328,3 +1328,104 @@ body.night .night-text { opacity: 1; }
 /* любимые карточки в настройках */
 .fav-list { margin: 0 0 12px; padding-left: 22px; color: var(--ink); font-size: 16px; line-height: 1.6; }
 .fav-list .empty { list-style: none; margin-left: -22px; color: var(--ink-soft); }
+
+/* ---------- развивающие вставки ---------- */
+
+.extra {
+  position: absolute;
+  inset: 0;
+  z-index: 3;
+  pointer-events: none;
+}
+
+.extra-food {
+  position: absolute;
+  left: -12%;
+  top: 50%;
+  width: 36%;
+  aspect-ratio: 1;
+  border-radius: 50%;
+  background: #FFF8EE;
+  box-shadow: 0 0 0 8px var(--card), var(--shadow);
+  display: grid;
+  place-items: center;
+}
+
+.extra-food svg { width: 70%; height: 70%; }
+
+.extra-small {
+  position: absolute;
+  right: -8%;
+  top: 44%;
+  width: 34%;
+  aspect-ratio: 1;
+}
+
+.extra-food,
+.extra-small,
+.extra-copy,
+.extra-bg {
+  opacity: 0;
+  transform: scale(0.6);
+  transition: opacity calc(0.8s * var(--dur)) var(--ease), transform calc(0.8s * var(--dur)) var(--ease),
+              left calc(0.8s * var(--dur)) var(--ease), top calc(0.8s * var(--dur)) var(--ease), width calc(0.8s * var(--dur)) var(--ease);
+}
+
+.extra .on,
+.extra-bg.on { opacity: 1; transform: none; }
+
+.extra-copy { transform: translate(-50%, -50%) scale(0.6); }
+.extra .extra-copy.on { transform: translate(-50%, -50%); }
+
+.extra-small.hop { animation: extra-hop calc(0.7s * var(--dur)) var(--ease) 3; }
+
+@keyframes extra-hop {
+  0%, 100% { transform: none; }
+  50% { transform: translateY(calc(-12% * var(--amp))); }
+}
+
+.extra-bg {
+  position: absolute;
+  left: 4%;
+  top: 2%;
+  width: 92%;
+  aspect-ratio: 1;
+  border-radius: 50%;
+  overflow: hidden;
+  transform: none;
+}
+
+.extra-bg svg { display: block; width: 100%; height: 100%; }
+
+.extra-many {
+  position: absolute;
+  left: 4%;
+  top: 1.75%;
+  width: 92%;
+  aspect-ratio: 1;
+}
+
+.extra-copy {
+  position: absolute;
+  aspect-ratio: 1;
+}
+
+.extra-small svg,
+.extra-copy svg { display: block; width: 100%; height: 100%; overflow: visible; }
+
+#stage .tile-animal { transition: opacity calc(0.6s * var(--dur)) var(--ease); }
+#stage .tile-animal.extra-hide { opacity: 0; }
+
+.extra-ring {
+  fill: none;
+  stroke: #F2B84B;
+  stroke-width: 10;
+  transform-box: fill-box;
+  transform-origin: center;
+  animation: extra-ring calc(1.2s * var(--dur)) var(--ease) infinite alternate;
+}
+
+@keyframes extra-ring {
+  from { opacity: 0.5; transform: scale(0.94); }
+  to { opacity: 1; transform: scale(1.04); }
+}

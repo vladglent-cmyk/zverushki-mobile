@@ -53,7 +53,12 @@ export class Scene {
     this.stage = stage;
     this.stageTile = stageTile;
     this.kruzhok = kruzhok;
-    this.card = kruzhok.parentElement;   // .stage-card: класс real — видео большое, рисунок в уголке
+    this.card = kruzhok.parentElement;
+    this.onExtra = null;          // развивающая вставка после показа (если включена в настройках)
+    this.onExtraCancel = null;
+    this.extraDone = false;
+    this.extraToken = 0;
+    this.extraRunning = false;   // .stage-card: класс real — видео большое, рисунок в уголке
     this.video = kruzhok.querySelector('video');
     this.videos = videos || {};
     this.videoEnabled = videoEnabled;
@@ -255,6 +260,7 @@ export class Scene {
     const animal = ANIMALS[i];
     this.stageTile.style.setProperty('--c', animal.color);
     this.stageTile.innerHTML = tileHtml(animal);
+    this.extraDone = false;
     this.tiles.forEach((t, k) => t.classList.toggle('lifted', k === i));
     this.index = i;
   }
@@ -353,7 +359,7 @@ export class Scene {
 
   // Повторный клик по зверьку: звук перезапускается, анимация не дёргается.
   replay() {
-    if (this.busy || !this.open) return;
+    if (this.busy || !this.open || this.extraRunning) return;
     this.onCard?.(this.index);
     this.cancelReturn();
     if (this.actTimer) return this.onShow?.(ANIMALS[this.index]);
@@ -373,7 +379,7 @@ export class Scene {
     this.actTimer = setTimeout(() => {
       el.classList.remove('act');
       this.actTimer = null;
-      if (!withVideo) this.scheduleReturn();
+      if (!withVideo) this.afterAct();
     }, ACT_MS);
   }
 
@@ -421,7 +427,7 @@ export class Scene {
       if (token !== this.videoToken) return;
       clearTimeout(this.videoTimer);
       video.pause();
-      this.scheduleReturn();
+      this.afterAct();
     };
     video.ontimeupdate = () => {
       if (clip.end && video.currentTime >= clip.end && !video.paused) finish();
@@ -430,11 +436,41 @@ export class Scene {
     video.onerror = () => {   // видео не загрузилось — рисунок обратно крупно
       if (token !== this.videoToken) return;
       this.card.classList.remove('real');
-      this.scheduleReturn();
+      this.afterAct();
     };
     if (video.readyState >= 1) begin();
     else video.addEventListener('loadedmetadata', begin, { once: true });
     return true;
+  }
+
+  // Зверь и видео отыграли. Если включены развивающие вставки — одна вставка
+  // (видео уступает место рисунку), потом как обычно возврат к сетке.
+  afterAct() {
+    if (!this.open) return;
+    const job = this.extraDone || !this.onExtra ? null : this.onExtra(ANIMALS[this.index]);
+    this.extraDone = true;
+    if (!job) return this.scheduleReturn();
+    this.cancelReturn();
+    this.extraRunning = true;
+    const token = ++this.extraToken;
+    const alive = () => token === this.extraToken && this.open;
+    this.kruzhok.classList.remove('shown');
+    this.kruzhok.hidden = true;
+    this.card.classList.remove('real');
+    Promise.resolve()
+      .then(() => job({ card: this.card, tile: this.stageTile, alive }))
+      .catch(() => {})
+      .finally(() => {
+        if (!alive()) return;
+        this.extraRunning = false;
+        this.scheduleReturn();
+      });
+  }
+
+  cancelExtra() {
+    this.extraToken++;
+    this.extraRunning = false;
+    this.onExtraCancel?.();
   }
 
   // Всё отыграло: зверёк сам возвращается на место, и снова видно всех — кого назвать дальше.
@@ -470,6 +506,7 @@ export class Scene {
     clearTimeout(this.actTimer);
     this.actTimer = null;
     this.cancelReturn();
+    this.cancelExtra();
   }
 }
 

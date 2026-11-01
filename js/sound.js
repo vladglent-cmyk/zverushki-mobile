@@ -220,6 +220,15 @@ function playBuffers(list) {
   };
 }
 
+// Сказать фразу голосом браузера (развивающие вставки: «Ослик ест травку»).
+export function say(text) {
+  stop();
+  playing = true;
+  const id = ++playId;
+  setTimeout(() => { if (id === playId) markEnded(); }, 9000);
+  speak(text);
+}
+
 function speak(text) {
   if (!('speechSynthesis' in window) || !text) return markEnded();
   // Chrome иногда «глотает» фразу, сказанную сразу после cancel(), поэтому короткая пауза.
